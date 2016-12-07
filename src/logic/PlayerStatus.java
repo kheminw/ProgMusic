@@ -34,15 +34,27 @@ public class PlayerStatus {
 		PlayerStatus.fever += fever;
 		if(fever >= 100){
 			fever = 100;
+			isInFever = true;
+		}
+		else if(fever <= 0){
+			fever = 0;
+			isInFever = false;
 		}
 	}
 	public static void toggleFever(){
 		isInFever = !isInFever;
 	}
-	public static boolean getInFever(){
+	public static boolean isInFever(){
 		return isInFever;
 	}
 	public static boolean isGameOver(){
 		return isGameOver;
+	}
+	public static void initialize(){
+		score = 0;
+		fever = 0;
+		hp = 0;
+		isGameOver = false;
+		isInFever = false;
 	}
 }

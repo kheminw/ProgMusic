@@ -14,16 +14,16 @@ public class PlayerStatus {
 	}
 	public static void setScore(int score) {
 		PlayerStatus.score += score;
-		if(score >= 1000000) score = 1000000;
+		if(PlayerStatus.score >= 1000000) PlayerStatus.score = 1000000;
 	}
 	public static int getHp() {
 		return hp;
 	}
 	public static void setHp(int hp) {
 		PlayerStatus.hp += hp;
-		if(hp > 100) hp = 100;
-		else if(hp <= 0){
-			hp = 0;
+		if(PlayerStatus.hp > 100) PlayerStatus.hp = 100;
+		else if(PlayerStatus.hp <= 0){
+			PlayerStatus.hp = 0;
 			isGameOver = true;
 		}
 	}
@@ -32,12 +32,12 @@ public class PlayerStatus {
 	}
 	public static void setFever(int fever) {
 		PlayerStatus.fever += fever;
-		if(fever >= 100){
-			fever = 100;
+		if(PlayerStatus.fever >= 100){
+			PlayerStatus.fever = 100;
 			isInFever = true;
 		}
-		else if(fever <= 0){
-			fever = 0;
+		else if(PlayerStatus.fever <= 0){
+			PlayerStatus.fever = 0;
 			isInFever = false;
 		}
 	}

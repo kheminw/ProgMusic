@@ -26,6 +26,7 @@ public abstract class GameButton implements Tappable {
 			PlayerStatus.setScore(score);
 			PlayerStatus.setHp(5);
 			PlayerStatus.setFever(8);
+			PlayerStatus.incrementCombo();
 			this.hit = true;
 			return true;
 		}
@@ -34,6 +35,7 @@ public abstract class GameButton implements Tappable {
 			PlayerStatus.setScore(score);
 			PlayerStatus.setHp(3);
 			PlayerStatus.setFever(5);
+			PlayerStatus.incrementCombo();
 			this.hit = true;
 			return true;
 		}
@@ -41,6 +43,7 @@ public abstract class GameButton implements Tappable {
 			//TODO gui.displayMiss();
 			PlayerStatus.setHp(-15);
 			PlayerStatus.setFever(-1000);
+			PlayerStatus.resetCombo();
 			return false;
 		}
 	}

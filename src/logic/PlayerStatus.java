@@ -6,6 +6,9 @@ public class PlayerStatus {
 	private static int fever = 0;
 	private static boolean isGameOver = false;
 	private static boolean isInFever = false;
+	private static boolean isPause = false;
+	private static int combo = 0;
+	private static int maxCombo = 0;
 	public PlayerStatus() {
 		// TODO Auto-generated constructor stub
 	}
@@ -50,11 +53,33 @@ public class PlayerStatus {
 	public static boolean isGameOver(){
 		return isGameOver;
 	}
+	public static boolean isPause(){
+		return isPause;
+	}
+	public static void togglePause(){
+		isPause = !isPause;
+	}
+	public static int getCombo(){
+		return combo;
+	}
+	public static int getMaxCombo(){
+		return maxCombo;
+	}
+	public static void incrementCombo(){
+		combo++;
+		if(combo > maxCombo) maxCombo = combo;
+	}
+	public static void resetCombo(){
+		combo = 0;
+	}
 	public static void initialize(){
 		score = 0;
 		fever = 0;
 		hp = 0;
 		isGameOver = false;
 		isInFever = false;
+		resetCombo();
+		maxCombo = 0;
+		isPause = false;
 	}
 }

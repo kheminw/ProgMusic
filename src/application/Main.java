@@ -1,6 +1,7 @@
 package application;
 	
 import GUI.MenuScreen;
+import GUI.OptionScreen;
 import GUI.RenderableHolder;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +18,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 			MenuScreen root = new MenuScreen();
+			OptionScreen option = new OptionScreen();
 			Scene scene = new Scene(root,800,470);
 			Canvas canvas = new Canvas(800, 470);
 			primaryStage.setScene(scene);

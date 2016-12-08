@@ -40,13 +40,17 @@ public class MenuScreen extends Pane{
 	private Text option;
 	private Text exit;
 	private String startStyle = "-fx-font: 30px Designosaur; -fx-fill:linear-gradient(from 0% 0% to 100% 100% ,#6d90b8 10%, #2296ee 90%);-fx-stroke:black;-fx-stroke-width:0.1;";
+	
 	public MenuScreen() {
 		
 		this.canvas = new Canvas(800, 470);
 		gc = canvas.getGraphicsContext2D();
 		gc.drawImage(RenderableHolder.menuScreen[0], 0, 0,800,470);
 		start = new Text(450, 150, "Start");
-		start.setStyle(startStyle);
+		start.setStyle("-fx-font: 30px Designosaur;");
+		start.setStrokeWidth(0.1);
+		start.setStroke(Color.BLACK);
+		start.setFill(Color.WHITE);
 		DropShadow ds = new DropShadow();
 		ds.setOffsetX(2.0f);
 		ds.setOffsetY(2.0f);
@@ -79,7 +83,9 @@ public class MenuScreen extends Pane{
 			public void handle(Event event) {
 				// TODO Auto-generated method stub
 				start.setEffect(null);
-				start.setStyle(startStyle);
+				//start.setStyle(startStyle);
+				start.setStroke(Color.BLACK);
+				start.setFill(Color.WHITE);
 			}
 		});
 	}

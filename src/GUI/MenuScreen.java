@@ -46,25 +46,32 @@ public class MenuScreen extends Pane{
 		this.canvas = new Canvas(800, 470);
 		gc = canvas.getGraphicsContext2D();
 		gc.drawImage(RenderableHolder.menuScreen[0], 0, 0,800,470);
+		
 		start = new Text(450, 150, "Start");
 		start.setStyle("-fx-font: 30px Designosaur;");
 		start.setStrokeWidth(0.1);
 		start.setStroke(Color.BLACK);
 		start.setFill(Color.WHITE);
+		
+		option = new Text(500,200,"Option");
+		option.setStyle("-fx-font: 30px Designosaur;");
+		option.setStrokeWidth(0.1);
+		option.setStroke(Color.BLACK);
+		option.setFill(Color.WHITE);
+		
+		exit = new  Text(575,250,"Exit");
+		exit.setStyle("-fx-font: 30px Designosaur;");
+		exit.setStrokeWidth(0.1);
+		exit.setStroke(Color.BLACK);
+		exit.setFill(Color.WHITE);
+		
 		DropShadow ds = new DropShadow();
 		ds.setOffsetX(2.0f);
 		ds.setOffsetY(2.0f);
-		ds.setColor(Color.WHITE);
-		
-		
-		
-		
-		
-		option = new Text("Option");
-		exit = new  Text("Exit");
+		ds.setColor(Color.LIGHTGOLDENRODYELLOW);
 		gc.drawImage(RenderableHolder.menuScreen[1], 370, 50,270,60);
 		this.getChildren().add(canvas);
-		this.getChildren().add(start);
+		this.getChildren().addAll(start,option,exit);
 		
 		
 		start.setOnMouseEntered(new EventHandler<Event>() {
@@ -86,6 +93,50 @@ public class MenuScreen extends Pane{
 				//start.setStyle(startStyle);
 				start.setStroke(Color.BLACK);
 				start.setFill(Color.WHITE);
+			}
+		});
+		
+		option.setOnMouseEntered(new EventHandler<Event>() {
+
+			@Override
+			public void handle(Event event) {
+				// TODO Auto-generated method stub
+				option.setEffect(ds);
+
+			}
+		});
+		
+		option.setOnMouseExited(new EventHandler<Event>() {
+
+			@Override
+			public void handle(Event event) {
+				// TODO Auto-generated method stub
+				option.setEffect(null);
+				//start.setStyle(startStyle);
+				option.setStroke(Color.BLACK);
+				option.setFill(Color.WHITE);
+			}
+		});
+		
+		exit.setOnMouseEntered(new EventHandler<Event>() {
+
+			@Override
+			public void handle(Event event) {
+				// TODO Auto-generated method stub
+				exit.setEffect(ds);
+
+			}
+		});
+		
+		exit.setOnMouseExited(new EventHandler<Event>() {
+
+			@Override
+			public void handle(Event event) {
+				// TODO Auto-generated method stub
+				exit.setEffect(null);
+				//start.setStyle(startStyle);
+				exit.setStroke(Color.BLACK);
+				exit.setFill(Color.WHITE);
 			}
 		});
 	}

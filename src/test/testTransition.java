@@ -10,6 +10,8 @@ import javafx.animation.ScaleTransition;
 import javafx.animation.SequentialTransition;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -80,15 +82,15 @@ public class testTransition extends Pane {
 		
 		LeftButtonTransition left = new LeftButtonTransition(trapezoid);
 		
-		TranslateTransition rectr2 = new TranslateTransition(Duration.millis(2000), trapezoid);
-		rectr2.setFromX(-80);
-		rectr2.setFromY(140);
-		rectr2.setToX(-80);
-		rectr2.setToY(280);
-		
-		ScaleTransition scaleTransition3 = new ScaleTransition(Duration.millis(2000), trapezoid);
-		scaleTransition3.setToX(0);
-		scaleTransition3.setToY(0);
+//		TranslateTransition rectr2 = new TranslateTransition(Duration.millis(2000), trapezoid);
+//		rectr2.setFromX(0);
+//		rectr2.setFromY(0);
+//		rectr2.setToX(-60);
+//		rectr2.setToY(140);
+
+//		ScaleTransition scaleTransition3 = new ScaleTransition(Duration.millis(2000), trapezoid);
+//		scaleTransition3.setToX(0);
+//		scaleTransition3.setToY(0);
 		
 		FadeTransition fadeTransition3 = new FadeTransition(Duration.millis(3000), trapezoid);
 		fadeTransition3.setFromValue(1f);
@@ -98,12 +100,20 @@ public class testTransition extends Pane {
 //		parallelTransition.getChildren().addAll(fadeTransition, translateTransition, scaleTransition, scaleTransition2,
 //				rectr, fadeTransition2);
 		parallelTransition.getChildren().addAll(fadeTransition, translateTransition, scaleTransition, left, fadeTransition2);
+		parallelTransition.play();
 		
-		ParallelTransition close = new ParallelTransition();
-		close.getChildren().addAll(rectr2,scaleTransition3,fadeTransition3);
-		SequentialTransition seqT = new SequentialTransition (parallelTransition,close);
-	    seqT.setCycleCount(Timeline.INDEFINITE); 
-		seqT.play();
+		parallelTransition.setOnFinished(new EventHandler<ActionEvent>(){
+			@Override
+			public void handle(ActionEvent event){
+				LeftButtonCloseTransition leftClose = new LeftButtonCloseTransition(trapezoid);
+				ParallelTransition close = new ParallelTransition(fadeTransition3, leftClose);
+				close.getChildren().addAll();
+				close.play();
+			}
+		});
+//		SequentialTransition seqT = new SequentialTransition (parallelTransition,leftClose,fadeTransition3);
+//	    seqT.setCycleCount(Timeline.INDEFINITE); 
+		//seqT.play();
 		
 	     
 		this.getChildren().addAll(note, rect,trapezoid);

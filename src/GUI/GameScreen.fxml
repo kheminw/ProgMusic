@@ -24,7 +24,7 @@
       </Label>
       <Label layoutX="725.0" layoutY="23.0" prefHeight="60.0" prefWidth="62.0" text="aLbum artccccccccc" wrapText="true" />
       <Label layoutX="665.0" layoutY="45.0" prefHeight="17.0" prefWidth="40.0" text="name" />
-      <Line endX="350.0" layoutX="388.0" layoutY="369.0" startX="-350.0" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeWidth="20.0">
+      <Line fx:id="bar" endX="350.0" layoutX="388.0" layoutY="369.0" startX="-350.0" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeWidth="20.0">
          <effect>
             <MotionBlur radius="63.0" />
          </effect>

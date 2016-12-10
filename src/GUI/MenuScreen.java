@@ -45,7 +45,7 @@ public class MenuScreen extends Pane{
 		
 		this.canvas = new Canvas(800, 470);
 		gc = canvas.getGraphicsContext2D();
-		gc.drawImage(RenderableHolder.menuScreen[0], 0, 0,800,470);
+		gc.drawImage(RenderableHolder.bg[0], 0, 0,800,470);
 		
 		start = new Text(450, 150, "Start");
 		start.setStyle("-fx-font: 30px Designosaur;");
@@ -69,7 +69,7 @@ public class MenuScreen extends Pane{
 		ds.setOffsetX(2.0f);
 		ds.setOffsetY(2.0f);
 		ds.setColor(Color.LIGHTGOLDENRODYELLOW);
-		gc.drawImage(RenderableHolder.menuScreen[1], 370, 50,270,60);
+		gc.drawImage(RenderableHolder.bg[1], 370, 50,270,60);
 		this.getChildren().add(canvas);
 		this.getChildren().addAll(start,option,exit);
 		

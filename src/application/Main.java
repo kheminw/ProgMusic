@@ -1,5 +1,6 @@
 package application;
 	
+import GUI.GameScreen;
 import GUI.MenuScreen;
 import GUI.OptionScreen;
 import GUI.RenderableHolder;
@@ -18,8 +19,8 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 			MenuScreen root = new MenuScreen();
-			OptionScreen option = new OptionScreen();
-			Scene scene = new Scene(root,800,470);
+			GameScreen option = new GameScreen();
+			Scene scene = new Scene(option,800,470);
 			Canvas canvas = new Canvas(800, 470);
 			primaryStage.setScene(scene);
 			primaryStage.show();

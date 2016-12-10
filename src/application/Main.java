@@ -19,8 +19,9 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 			MenuScreen root = new MenuScreen();
-			GameScreen option = new GameScreen();
-			Scene scene = new Scene(option,800,470);
+			GameScreen game = new GameScreen();
+			OptionScreen option = new OptionScreen();
+			Scene scene = new Scene(game,800,470);
 			Canvas canvas = new Canvas(800, 470);
 			primaryStage.setScene(scene);
 			primaryStage.show();

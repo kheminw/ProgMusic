@@ -8,14 +8,15 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.transform.Translate;
 import javafx.util.Duration;
 
-public class LeftButtonTransition extends Transition {
+public class CenterButtonTransition extends Transition {
+
 	private Polygon polygon;
 	private double[] points;
 	double movablePoint1XOffset;
 	double movablePoint1YOffset;
 	double movablePoint2XOffset;
 	double movablePoint2YOffset;
-	public LeftButtonTransition(Polygon shape) {
+	public CenterButtonTransition(Polygon shape) {
 		// TODO Auto-generated constructor stub
 		this.setCycleDuration(Duration.millis(2000));
 		this.polygon = shape;
@@ -26,7 +27,7 @@ public class LeftButtonTransition extends Transition {
 		movablePoint2YOffset = points[7];
 	}
 
-	public LeftButtonTransition(double arg0, Polygon shape) {
+	public CenterButtonTransition(double arg0, Polygon shape) {
 		super(arg0);
 		// TODO Auto-generated constructor stub
 		this.setCycleDuration(Duration.millis(2000));
@@ -47,8 +48,8 @@ public class LeftButtonTransition extends Transition {
 		pointInterpolate[3] -= movablePoint1YOffset;
 		pointInterpolate[4] -= movablePoint2XOffset;
 		pointInterpolate[5] -= movablePoint2YOffset;
-		Translate trapezoidTrans = new Translate(30*(float)percentage, 280*(float)percentage);
-		Translate trapezoidTrans2 = new Translate(-130*(float)percentage, 280*(float)percentage);
+		Translate trapezoidTrans = new Translate(-50*(float)percentage, 280*(float)percentage);
+		Translate trapezoidTrans2 = new Translate(-50*(float)percentage, 280*(float)percentage);
 		//Scale trapezoidScale = new Scale(6*(float)percentage, 14*(float)percentage);
 		trapezoidTrans.transform2DPoints(pointInterpolate, 2, currentPoints, 2, 1);
 		trapezoidTrans2.transform2DPoints(pointInterpolate, 4, currentPoints, 4, 1);
@@ -58,9 +59,9 @@ public class LeftButtonTransition extends Transition {
 		currentPoints[4] += movablePoint2XOffset;
 		currentPoints[5] += movablePoint2YOffset;
 		
-//		for(double point : currentPoints){
-//			System.out.println(point);
-//		}
+		for(double point : currentPoints){
+			System.out.println(point);
+		}
 		polygon.getPoints().clear();
 		polygon.getPoints().addAll(Arrays.stream(currentPoints).boxed().collect(Collectors.toList()));
 //		System.out.println(polygon.getPoints());

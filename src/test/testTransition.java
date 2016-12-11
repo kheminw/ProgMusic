@@ -1,5 +1,11 @@
 package test;
 
+import java.time.Instant;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
+import javafx.animation.Animation;
+import javafx.animation.Animation.Status;
 import javafx.animation.FadeTransition;
 import javafx.animation.ParallelTransition;
 import javafx.animation.PathTransition;
@@ -110,17 +116,38 @@ public class testTransition extends Pane {
 		parallelTransition.getChildren().addAll(fadeTransition, translateTransition, scaleTransition, left, fadeTransition2,
 				right, center);
 		parallelTransition.play();
+		Thread timer = new Thread(new Runnable(){
+			@Override
+			public void run(){
+				Instant start = Instant.now();
+				while(true){
+					Instant current = Instant.now();
+					java.time.Duration between = java.time.Duration.between(start, current);
+					if(between.compareTo(java.time.Duration.ofMillis(500)) >= 1){
+						parallelTransition.stop();
+						break;
+					}
+				}
+				CenterButtonCloseTransition centerClose = new CenterButtonCloseTransition(centerTrapezoid);
+				ParallelTransition close = new ParallelTransition(centerClose);
+				close.getChildren().addAll();
+				close.play();
+				System.out.println(parallelTransition.getStatus().toString());
+				System.out.println(close.getStatus().toString());
+			}
+		});
+		timer.start();
 		parallelTransition.setOnFinished(new EventHandler<ActionEvent>(){
 			@Override
 			public void handle(ActionEvent event){
 				LeftButtonCloseTransition leftClose = new LeftButtonCloseTransition(trapezoid);
-				CenterButtonCloseTransition centerClose = new CenterButtonCloseTransition(centerTrapezoid);
 				RightButtonCloseTransition rightClose = new RightButtonCloseTransition(rightTrapezoid);
-				ParallelTransition close = new ParallelTransition(fadeTransition3, leftClose, centerClose, rightClose);
+				ParallelTransition close = new ParallelTransition(fadeTransition3, leftClose, rightClose);
 				close.getChildren().addAll();
 				close.play();
 			}
 		});
+		
 //		SequentialTransition seqT = new SequentialTransition (parallelTransition,leftClose,fadeTransition3);
 //	    seqT.setCycleCount(Timeline.INDEFINITE); 
 		//seqT.play();
@@ -128,5 +155,8 @@ public class testTransition extends Pane {
 	     
 		this.getChildren().addAll(note, rect,trapezoid, rightTrapezoid, centerTrapezoid);
 	}
-
+	public synchronized static void addPoints(Polygon polygon, double[] array){
+		polygon.getPoints().clear();
+		polygon.getPoints().addAll(Arrays.stream(array).boxed().collect(Collectors.toList()));
+	}
 }

@@ -14,7 +14,7 @@
    <children>
       <ImageView fitHeight="470.0" fitWidth="800.0" pickOnBounds="true">
          <image>
-            <Image url="@../../../../Downloads/GameScreen.jpeg" />
+            <Image url="@../../res/GameScreen.jpeg" />
          </image>
       </ImageView>
       <Label layoutX="23.0" layoutY="23.0" text="0000000" textFill="WHITE">

@@ -26,18 +26,6 @@ public class RightButtonTransition extends Transition {
 		movablePoint2YOffset = points[7];
 	}
 
-	public RightButtonTransition(double arg0, Polygon shape) {
-		super(arg0);
-		// TODO Auto-generated constructor stub
-		this.setCycleDuration(Duration.millis(2000));
-		this.polygon = shape;
-		this.points = polygon.getPoints().stream().mapToDouble(d -> d).toArray();
-		movablePoint1XOffset = points[0];
-		movablePoint1YOffset = points[1];
-		movablePoint2XOffset = points[6];
-		movablePoint2YOffset = points[7];
-	}
-	
 	@Override
 	protected void interpolate(double percentage) {
 		// TODO Auto-generated method stub
@@ -58,9 +46,9 @@ public class RightButtonTransition extends Transition {
 		currentPoints[4] += movablePoint2XOffset;
 		currentPoints[5] += movablePoint2YOffset;
 		
-		for(double point : currentPoints){
-			System.out.println(point);
-		}
+//		for(double point : currentPoints){
+//			System.out.println(point);
+//		}
 		polygon.getPoints().clear();
 		polygon.getPoints().addAll(Arrays.stream(currentPoints).boxed().collect(Collectors.toList()));
 //		System.out.println(polygon.getPoints());

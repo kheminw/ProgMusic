@@ -25,18 +25,6 @@ public class LeftButtonCloseTransition extends Transition {
 		movablePoint2XOffset = points[4];
 		movablePoint2YOffset = points[5];
 	}
-
-	public LeftButtonCloseTransition(double arg0, Polygon shape) {
-		super(arg0);
-		// TODO Auto-generated constructor stub
-		this.setCycleDuration(Duration.millis(2000));
-		this.polygon = shape;
-		this.points = polygon.getPoints().stream().mapToDouble(d -> d).toArray();
-		movablePoint1XOffset = points[2];
-		movablePoint1YOffset = points[3];
-		movablePoint2XOffset = points[4];
-		movablePoint2YOffset = points[5];
-	}
 	
 	@Override
 	protected void interpolate(double percentage) {

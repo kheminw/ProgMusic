@@ -127,7 +127,7 @@ public class DrawingUtility {
 			fadeTransition2.setToValue(0.7f);
 			translateTransition = new TranslateTransition(Duration.millis(2000), note);
 			translateTransition.setFromX(0);
-			translateTransition.setToX(-80);
+			translateTransition.setToX(0);
 			translateTransition.setFromY(0);
 			translateTransition.setToY(280);
 			objects.add(note);
@@ -141,12 +141,12 @@ public class DrawingUtility {
 			fadeTransition = new FadeTransition(Duration.millis(2000), note);
 			fadeTransition.setFromValue(0.5f);
 			fadeTransition.setToValue(1f);
-			fadeTransition2 = new FadeTransition(Duration.millis(2000), centerTrapezoid);
+			fadeTransition2 = new FadeTransition(Duration.millis(2000), rightTrapezoid);
 			fadeTransition2.setFromValue(0.5f);
 			fadeTransition2.setToValue(0.7f);
 			translateTransition = new TranslateTransition(Duration.millis(2000), note);
 			translateTransition.setFromX(0);
-			translateTransition.setToX(-80);
+			translateTransition.setToX(80);
 			translateTransition.setFromY(0);
 			translateTransition.setToY(280);
 			objects.add(note);

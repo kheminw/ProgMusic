@@ -43,7 +43,7 @@ public class GameScreen extends Pane {
 		tapLine.setEffect(mb);
 		List<Node> objects = null;
 		try {
-			objects = DrawingUtility.drawHoldButton(1, 2000, Color.BLUE);
+			objects = DrawingUtility.drawHoldButton(3, 2000, Color.BLUE);
 		} catch (InvalidDirectionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

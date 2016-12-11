@@ -1,5 +1,8 @@
 package GUI;
 
+import java.util.List;
+
+import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.effect.Effect;
@@ -11,6 +14,8 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.shape.StrokeLineJoin;
 import javafx.scene.text.Text;
+import utility.DrawingUtility;
+import utility.InvalidDirectionException;
 
 public class GameScreen extends Pane {
 	private Canvas canvas;
@@ -36,9 +41,16 @@ public class GameScreen extends Pane {
 		MotionBlur mb = new MotionBlur();
 		mb.setRadius(63);
 		tapLine.setEffect(mb);
-		
+		List<Node> objects = null;
+		try {
+			objects = DrawingUtility.drawHoldButton(1, 2000, Color.BLUE);
+		} catch (InvalidDirectionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		this.getChildren().add(canvas);
 		this.getChildren().add(tapLine);
+		this.getChildren().addAll(objects);
 
 	}
 }

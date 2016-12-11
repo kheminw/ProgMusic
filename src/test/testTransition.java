@@ -111,8 +111,6 @@ public class testTransition extends Pane {
 		fadeTransition3.setToValue(0f);
 		
 		ParallelTransition parallelTransition = new ParallelTransition();
-//		parallelTransition.getChildren().addAll(fadeTransition, translateTransition, scaleTransition, scaleTransition2,
-//				rectr, fadeTransition2);
 		parallelTransition.getChildren().addAll(fadeTransition, translateTransition, scaleTransition, left, fadeTransition2,
 				right, center);
 		parallelTransition.play();
@@ -124,7 +122,7 @@ public class testTransition extends Pane {
 					Instant current = Instant.now();
 					java.time.Duration between = java.time.Duration.between(start, current);
 					if(between.compareTo(java.time.Duration.ofMillis(500)) >= 1){
-						parallelTransition.stop();
+						//parallelTransition.stop();
 						break;
 					}
 				}

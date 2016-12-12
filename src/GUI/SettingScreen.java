@@ -1,5 +1,9 @@
 package GUI;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -31,17 +35,19 @@ import javafx.scene.text.*;
 public class SettingScreen extends VBox {
 	private Canvas canvas;
 	private GraphicsContext gc;
-	public SettingScreen(){
+	public SettingScreen() throws FileNotFoundException{
 		
-		
+	    Font titleFont = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Light.otf")), 30);
+	    Font f = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Light.otf")), 15);
+	    Font buttonFont = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Light.otf")), 12);
+
+	    
 		VBox setting = new VBox(60);
 		setting.setAlignment(Pos.CENTER);
 		setting.setPadding(new Insets(50));
 		//title
 		Text title = new Text("Setting");
-		title.setStyle("-fx-font: 30px NixieOne;");
-		title.setStrokeWidth(0.1);
-		title.setStroke(Color.BLACK);
+		title.setFont(titleFont);
 		title.setFill(Color.WHITE);
 		
 		//Sound
@@ -53,8 +59,10 @@ public class SettingScreen extends VBox {
 		soundBar.setPrefWidth(500);
 		Label soundLabel = new Label("Sound       ");
 		soundLabel.setTextFill(Color.WHITE);
+		soundLabel.setFont(f);
 		Label soundValue = new Label("100");
 		soundValue.setTextFill(Color.WHITE);
+		soundValue.setFont(f);
 		volume.getChildren().addAll(soundLabel,soundBar,soundValue);
 		soundBar.valueProperty().addListener(new ChangeListener() {
 		
@@ -73,7 +81,9 @@ public class SettingScreen extends VBox {
 		brightBar.setPrefWidth(500);
 		Label brightValue = new Label("100");
 		brightValue.setTextFill(Color.WHITE);
+		brightValue.setFont(f);
 		Label brightLabel = new Label("Brightness");
+		brightLabel.setFont(f);
 		brightLabel.setTextFill(Color.WHITE);
 		brightness.getChildren().addAll(brightLabel,brightBar,brightValue);
 		brightBar.valueProperty().addListener(new ChangeListener() {
@@ -86,6 +96,7 @@ public class SettingScreen extends VBox {
 		});
 		
 		Button restoreDefault = new Button("Restore Results");
+		restoreDefault.setFont(buttonFont);
 		restoreDefault.setOnAction(new EventHandler<ActionEvent>() {
 			
 			@Override
@@ -97,12 +108,14 @@ public class SettingScreen extends VBox {
 		});
 		
 		Button clearHighScore = new Button("Reset highscore");
-		
+		clearHighScore.setFont(buttonFont);
 		Button back = new Button("Back");
+		back.setFont(buttonFont);
 		HBox restore = new HBox(50);
 		
 		ToggleButton tb = new ToggleButton("Difficulty : Easy");
 		tb.setSelected(false);
+		tb.setFont(buttonFont);
 		tb.setOnAction(new EventHandler<ActionEvent>() {
 			
 			@Override

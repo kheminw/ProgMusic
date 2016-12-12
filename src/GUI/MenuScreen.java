@@ -1,5 +1,8 @@
 package GUI;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -43,30 +46,26 @@ public class MenuScreen extends Pane{
 	private Text start;
 	private Text option;
 	private Text exit;
-	private String startStyle = "-fx-font: 30px Designosaur; -fx-fill:linear-gradient(from 0% 0% to 100% 100% ,#6d90b8 10%, #2296ee 90%);-fx-stroke:black;-fx-stroke-width:0.1;";
 	
-	public MenuScreen() {
+	public MenuScreen() throws FileNotFoundException {
+		
+	    Font f = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Regular.otf")), 30);
+
 		
 		this.canvas = new Canvas(800, 470);
 		gc = canvas.getGraphicsContext2D();
 		gc.drawImage(RenderableHolder.bg[0], 0, 0,800,470);
 		
-		start = new Text(450, 150, "Start");
-		start.setStyle("-fx-font: 30px Designosaur;");
-		start.setStrokeWidth(0.1);
-		start.setStroke(Color.BLACK);
+		start = new Text(450, 165, "Start");
+		start.setFont(f);
 		start.setFill(Color.WHITE);
 		
-		option = new Text(500,200,"Setting");
-		option.setStyle("-fx-font: 30px Designosaur;");
-		option.setStrokeWidth(0.1);
-		option.setStroke(Color.BLACK);
+		option = new Text(500,225,"Setting");
+		option.setFont(f);
 		option.setFill(Color.WHITE);
 		
-		exit = new  Text(575,250,"Exit");
-		exit.setStyle("-fx-font: 30px Designosaur;");
-		exit.setStrokeWidth(0.1);
-		exit.setStroke(Color.BLACK);
+		exit = new  Text(575,285,"Exit");
+		exit.setFont(f);
 		exit.setFill(Color.WHITE);
 		
 		DropShadow ds = new DropShadow();
@@ -94,8 +93,7 @@ public class MenuScreen extends Pane{
 			public void handle(Event event) {
 				// TODO Auto-generated method stub
 				start.setEffect(null);
-				//start.setStyle(startStyle);
-				start.setStroke(Color.BLACK);
+				
 				start.setFill(Color.WHITE);
 			}
 		});
@@ -117,7 +115,6 @@ public class MenuScreen extends Pane{
 				// TODO Auto-generated method stub
 				option.setEffect(null);
 				//start.setStyle(startStyle);
-				option.setStroke(Color.BLACK);
 				option.setFill(Color.WHITE);
 			}
 		});
@@ -139,7 +136,6 @@ public class MenuScreen extends Pane{
 				// TODO Auto-generated method stub
 				exit.setEffect(null);
 				//start.setStyle(startStyle);
-				exit.setStroke(Color.BLACK);
 				exit.setFill(Color.WHITE);
 			}
 		});

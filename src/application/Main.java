@@ -1,5 +1,7 @@
 package application;
 	
+import java.io.FileNotFoundException;
+
 import GUI.GameScreen;
 import GUI.MenuScreen;
 import GUI.SettingScreen;
@@ -18,7 +20,7 @@ import javafx.scene.layout.BorderPane;
 
 public class Main extends Application {
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage) throws FileNotFoundException {
 			MenuScreen root = new MenuScreen();
 			GameScreen game = new GameScreen();
 			SettingScreen setting = new SettingScreen();

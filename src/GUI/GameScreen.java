@@ -13,6 +13,7 @@ import javafx.scene.paint.LinearGradient;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.shape.StrokeLineJoin;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import utility.DrawingUtility;
 import utility.InvalidDirectionException;
@@ -24,6 +25,9 @@ public class GameScreen extends Pane {
 	private String startStyle = "-fx-font: 30px Designosaur; -fx-fill:linear-gradient(from 0% 0% to 100% 100% ,#6d90b8 10%, #2296ee 90%);-fx-stroke:black;-fx-stroke-width:0.1;";
 	
 	public GameScreen() {
+		
+		
+
 		
 		this.canvas = new Canvas(800, 470);
 		gc = canvas.getGraphicsContext2D();

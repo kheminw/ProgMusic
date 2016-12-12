@@ -13,6 +13,7 @@ import org.w3c.dom.events.MouseEvent;
 import org.w3c.dom.views.AbstractView;
 
 import javafx.animation.AnimationTimer;
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -31,14 +32,24 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.LinearGradient;
+import javafx.scene.paint.Stop;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 public class MenuScreen extends Pane{
 	private Canvas canvas;
@@ -46,27 +57,61 @@ public class MenuScreen extends Pane{
 	private Text start;
 	private Text option;
 	private Text exit;
+	private  Font f = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Regular.otf")), 30);
 	
 	public MenuScreen() throws FileNotFoundException {
 		
-	    Font f = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Regular.otf")), 30);
-
+	   
+		Image image = RenderableHolder.bg[0];
+		// new BackgroundSize(width, height, widthAsPercentage, heightAsPercentage, contain, cover)
+		BackgroundSize backgroundSize = new BackgroundSize(800, 470, true, true, true, true);
+		// new BackgroundImage(image, repeatX, repeatY, position, size)
+		BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
+		// new Background(images...)
+		Background background = new Background(backgroundImage);
+		this.setBackground(background);
 		
 		this.canvas = new Canvas(800, 470);
 		gc = canvas.getGraphicsContext2D();
-		gc.drawImage(RenderableHolder.bg[0], 0, 0,800,470);
+		Rectangle open = new Rectangle(800, 470, Color.WHITE);
+		FadeTransition fadeTransition = 
+	            new FadeTransition(Duration.millis(5000), open);
+	        fadeTransition.setFromValue(1.0f);
+	        fadeTransition.setToValue(0f);
+		fadeTransition.play();
 		
+		Stop[] stopStart = new Stop[] { new Stop(0, Color.STEELBLUE), new Stop(1, Color.SKYBLUE)};
+		LinearGradient lg1 = new LinearGradient(1, 0.5, 1, 1, true, CycleMethod.NO_CYCLE, stopStart);
 		start = new Text(450, 165, "Start");
 		start.setFont(f);
-		start.setFill(Color.WHITE);
+		start.setFill(lg1);
+		FadeTransition fadeTransitionStart = 
+	            new FadeTransition(Duration.millis(6000), start);
+	        fadeTransitionStart.setFromValue(0f);
+	        fadeTransitionStart.setToValue(1f);
+		fadeTransitionStart.play();
 		
+		Stop[] stopOption = new Stop[] { new Stop(0, Color.LIGHTBLUE), new Stop(1, Color.ORANGE)};
+		LinearGradient lg2 = new LinearGradient(1, 0.5, 1, 1, true, CycleMethod.NO_CYCLE, stopOption);
 		option = new Text(500,225,"Setting");
 		option.setFont(f);
-		option.setFill(Color.WHITE);
+		option.setFill(lg2);
+		FadeTransition fadeTransitionOption = 
+	            new FadeTransition(Duration.millis(6000), option);
+	        fadeTransitionOption.setFromValue(0f);
+	        fadeTransitionOption.setToValue(1f);
+		fadeTransitionOption.play();
 		
+		Stop[] stopExit = new Stop[] { new Stop(0, Color.ORANGE), new Stop(1, Color.ORANGERED)};
+		LinearGradient lg3 = new LinearGradient(1, 0.5, 1, 1, true, CycleMethod.NO_CYCLE, stopExit);
 		exit = new  Text(575,285,"Exit");
 		exit.setFont(f);
-		exit.setFill(Color.WHITE);
+		exit.setFill(lg3);
+		FadeTransition fadeTransitionExit = 
+	            new FadeTransition(Duration.millis(6000), exit);
+	        fadeTransitionExit.setFromValue(0f);
+	        fadeTransitionExit.setToValue(1f);
+		fadeTransitionExit.play();
 		
 		DropShadow ds = new DropShadow();
 		ds.setOffsetX(2.0f);
@@ -74,8 +119,9 @@ public class MenuScreen extends Pane{
 		ds.setColor(Color.LIGHTGOLDENRODYELLOW);
 		gc.drawImage(RenderableHolder.bg[1], 370, 50,270,60);
 		this.getChildren().add(canvas);
-		this.getChildren().addAll(start,option,exit);
+		this.getChildren().addAll(open,option,exit,start);
 		
+
 		
 		start.setOnMouseEntered(new EventHandler<Event>() {
 
@@ -94,7 +140,7 @@ public class MenuScreen extends Pane{
 				// TODO Auto-generated method stub
 				start.setEffect(null);
 				
-				start.setFill(Color.WHITE);
+				start.setFill(lg1);
 			}
 		});
 		
@@ -115,7 +161,7 @@ public class MenuScreen extends Pane{
 				// TODO Auto-generated method stub
 				option.setEffect(null);
 				//start.setStyle(startStyle);
-				option.setFill(Color.WHITE);
+				option.setFill(lg2);
 			}
 		});
 		
@@ -136,7 +182,7 @@ public class MenuScreen extends Pane{
 				// TODO Auto-generated method stub
 				exit.setEffect(null);
 				//start.setStyle(startStyle);
-				exit.setFill(Color.WHITE);
+				exit.setFill(lg3);
 			}
 		});
 		

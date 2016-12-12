@@ -6,6 +6,7 @@ import GUI.GameScreen;
 import GUI.MenuScreen;
 import GUI.SettingScreen;
 import GUI.RenderableHolder;
+import GUI.SelectSongScreen;
 import GUI.SettingScreen;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -24,8 +25,8 @@ public class Main extends Application {
 			MenuScreen root = new MenuScreen();
 			GameScreen game = new GameScreen();
 			SettingScreen setting = new SettingScreen();
-			Scene scene = new Scene(setting,800,470);
-			Canvas canvas = new Canvas(800, 470);
+			SelectSongScreen select = new SelectSongScreen();
+			Scene scene = new Scene(select,800,470);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		

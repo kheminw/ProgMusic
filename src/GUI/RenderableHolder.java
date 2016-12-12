@@ -14,7 +14,7 @@ public class RenderableHolder {
 	final static RenderableHolder instance = new RenderableHolder();
 	public RenderableHolder(){
 		entities = new ArrayList<>();
-		bg = new Image[4];
+		bg = new Image[5];
 	}
 	
 	static{
@@ -30,6 +30,7 @@ public class RenderableHolder {
 		bg[1] = new Image(ClassLoader.getSystemResource("Prog-Music-2.png").toString());
 		bg[2] = new Image(ClassLoader.getSystemResource("option-wallpaper.jpg").toString());
 		bg[3] = new Image(ClassLoader.getSystemResource("GameScreen.jpeg").toString());
+		bg[4] = new Image(ClassLoader.getSystemResource("SelectSong.jpg").toString());
 	}
 	
 	public synchronized void remove(int index){

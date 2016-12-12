@@ -35,11 +35,13 @@ import javafx.scene.text.*;
 public class SettingScreen extends VBox {
 	private Canvas canvas;
 	private GraphicsContext gc;
+	private Font titleFont = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Light.otf")), 30);
+	private Font f = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Light.otf")), 15);
+	private Font buttonFont = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Light.otf")), 12);
+	
 	public SettingScreen() throws FileNotFoundException{
 		
-	    Font titleFont = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Light.otf")), 30);
-	    Font f = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Light.otf")), 15);
-	    Font buttonFont = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Light.otf")), 12);
+	   
 
 	    
 		VBox setting = new VBox(60);
@@ -57,7 +59,7 @@ public class SettingScreen extends VBox {
 		soundBar.setLayoutX(50);
 		soundBar.setLayoutY(200);
 		soundBar.setPrefWidth(500);
-		Label soundLabel = new Label("Sound       ");
+		Label soundLabel = new Label("Sound        ");
 		soundLabel.setTextFill(Color.WHITE);
 		soundLabel.setFont(f);
 		Label soundValue = new Label("100");

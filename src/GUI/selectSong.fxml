@@ -1,5 +1,7 @@
-	<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
@@ -8,27 +10,87 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Line endX="200.0" layoutX="400.0" layoutY="235.0" rotate="90.0" startX="-200.0" />
-      <Line endX="200.0" layoutX="149.0" layoutY="272.0" startX="-100.0" />
-      <Label layoutX="179.0" layoutY="66.0" text="Song 1" />
-      <Label layoutX="179.0" layoutY="145.0" text="Song 2" />
-      <Label layoutX="63.0" layoutY="331.0" prefHeight="62.0" prefWidth="275.0" text="0000000">
+      <ImageView fitHeight="470.0" fitWidth="800.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../../Downloads/SelectSong.jpg" />
+         </image>
+      </ImageView>
+      <Line endX="200.0" layoutX="400.0" layoutY="235.0" rotate="90.0" startX="-200.0" stroke="WHITE" />
+      <Line endX="200.0" layoutX="150.0" layoutY="200.0" startX="-100.0" stroke="WHITE" />
+      <Label layoutX="188.0" layoutY="35.0" prefHeight="29.0" prefWidth="24.0" text="L" textFill="WHITE">
          <font>
-            <Font size="60.0" />
+            <Font size="40.0" />
+         </font></Label>
+      <Label layoutX="139.0" layoutY="116.0" prefHeight="50.0" prefWidth="132.0" text="ANiMA" textFill="WHITE">
+         <font>
+            <Font size="40.0" />
+         </font></Label>
+      <Label layoutX="114.0" layoutY="244.0" prefHeight="62.0" prefWidth="172.0" text="0000000" textFill="WHITE">
+         <font>
+            <Font size="39.0" />
          </font>
       </Label>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="497.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../Downloads/GameScreen.jpeg" />
          </image>
+         <effect>
+            <DropShadow />
+         </effect>
       </ImageView>
-      <Label layoutX="715.0" layoutY="404.0" text="Label" />
-      <Label layoutX="497.0" layoutY="287.0" text="Artist :" />
-      <Label layoutX="497.0" layoutY="227.0" text="BPm : 200" />
-      <Label layoutX="497.0" layoutY="351.0" text="Total Note :" />
-      <Label layoutX="181.0" layoutY="304.0" text="Score" />
+      <Label layoutX="537.0" layoutY="289.0" text="Artist : Ice" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label layoutX="497.0" layoutY="227.0" text="BPm : 200" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label layoutX="597.0" layoutY="345.0" text="Total Note : 2000" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label layoutX="182.0" layoutY="214.0" prefHeight="22.0" prefWidth="45.0" text="Score" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
+      <Label layoutX="171.0" layoutY="319.0" prefHeight="20.0" prefWidth="58.0" text="80.00%" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="183.0" layoutY="368.0" text="Good" textFill="#ffde00">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="290.0" layoutY="368.0" text="Miss" textFill="#ff3100">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="193.0" layoutY="413.0" text="200" textFill="#ffde00" />
+      <Label layoutX="70.0" layoutY="368.0" prefHeight="22.0" prefWidth="65.0" text="Perfect" textFill="LIME">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="90.0" layoutY="413.0" text="Label" textFill="LIME" />
+      <ImageView fitHeight="50.0" fitWidth="75.0" layoutX="699.0" layoutY="389.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Downloads/play.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="711.0" layoutY="405.0" text="Play" textFill="WHITE" />
+      <ImageView fitHeight="50.0" fitWidth="75.0" layoutX="439.0" layoutY="389.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Downloads/blue-back-button-clip-art.png" />
+         </image>
+      </ImageView>
    </children>
+   <padding>
+      <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+   </padding>
 </Pane>

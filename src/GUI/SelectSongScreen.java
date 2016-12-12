@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import application.Main;
 import javafx.animation.FadeTransition;
 import javafx.animation.ParallelTransition;
 import javafx.animation.SequentialTransition;
@@ -30,6 +31,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import logic.MainLogic;
 
 public class SelectSongScreen extends Pane {
 
@@ -195,6 +197,16 @@ public class SelectSongScreen extends Pane {
 		ftnote.setToValue(1f);
 		ftnote.play();
 		
+		ImageView next = new ImageView(RenderableHolder.bg[5]);
+		next.setLayoutX(700);
+		next.setLayoutY(400);
+		next.setFitWidth(50);
+		next.setFitHeight(50);
+		ImageView back = new ImageView(RenderableHolder.bg[6]);
+		back.setLayoutX(450);
+		back.setLayoutY(400);
+		back.setFitWidth(50);
+		back.setFitHeight(50);
 		DropShadow dsAlbum = new DropShadow(BlurType.THREE_PASS_BOX	, Color.BLACK, 10, 0, 0, 0);
 		ds.setWidth(21);
 		ds.setHeight(21);
@@ -205,6 +217,24 @@ public class SelectSongScreen extends Pane {
 		albumArt.setFitHeight(150);
 		albumArt.setEffect(dsAlbum);
 		
+		next.setOnMouseClicked(new EventHandler<Event>() {
+
+			@Override
+			public void handle(Event event) {
+				// TODO Auto-generated method stub
+				MainLogic.instance.switchScreen("GameScreen");
+			}
+		});
+		
+		back.setOnMouseClicked(new EventHandler<Event>() {
+
+			@Override
+			public void handle(Event event) {
+				// TODO Auto-generated method stub
+				MainLogic.instance.switchScreen("MenuScreen");
+				
+			}
+		});
 		firstSong.setOnMouseEntered(new EventHandler<Event>() {
 
 			@Override
@@ -431,7 +461,7 @@ public class SelectSongScreen extends Pane {
 							bpm.setText("BPM : 200");
 							artist.setText("Artist : Xi");
 							totalNote.setText("Total Note: 2000");
-							albumArt.setImage(RenderableHolder.albumArt[1]);
+								albumArt.setImage(RenderableHolder.albumArt[1]);
 						}
 					});
 					seqT.play();
@@ -442,7 +472,7 @@ public class SelectSongScreen extends Pane {
 		});
 
 		this.getChildren().addAll(canvas, open, splitW, split, firstSong, secondSong, scorePercent, score, scoreLabel,
-				perfect, good, miss, perfectNote, goodNote, missNote, bpm, artist, totalNote,albumArt);
+				perfect, good, miss, perfectNote, goodNote, missNote, bpm, artist, totalNote,albumArt,next,back);
 
 	}
 

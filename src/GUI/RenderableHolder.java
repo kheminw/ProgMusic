@@ -15,7 +15,7 @@ public class RenderableHolder {
 	final static RenderableHolder instance = new RenderableHolder();
 	public RenderableHolder(){
 		entities = new ArrayList<>();
-		bg = new Image[5];
+		bg = new Image[7];
 		albumArt = new Image[2];
 		song = new Media[2];
 	}
@@ -34,6 +34,8 @@ public class RenderableHolder {
 		bg[2] = new Image(ClassLoader.getSystemResource("option-wallpaper.jpg").toString());
 		bg[3] = new Image(ClassLoader.getSystemResource("GameScreen.jpeg").toString());
 		bg[4] = new Image(ClassLoader.getSystemResource("SelectSong.jpg").toString());
+		bg[5] = new Image(ClassLoader.getSystemResource("next.png").toString());
+		bg[6] = new Image(ClassLoader.getSystemResource("back.png").toString());
 		albumArt[0] = new Image(ClassLoader.getSystemResource("L.jpg").toString());
 		albumArt[1] = new Image(ClassLoader.getSystemResource("ANiMA.jpg").toString());
 		song[0] = new Media(ClassLoader.getSystemResource("L.mp3").toString());

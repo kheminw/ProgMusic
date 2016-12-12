@@ -14,6 +14,7 @@ public class Song {
 	private String artist;
 	private Image albumArt;
 	private AudioClip song;
+	private int highScore = 0;
 	
 	public Song() {
 		//default constructor
@@ -91,6 +92,12 @@ public class Song {
 		this.notes = notes;
 	}
 	
+	public void setHighScore(int highScore){
+		this.highScore = highScore;
+	}
+	public int getHighScore(){
+		return this.highScore;
+	}
 	public void play(){
 		//TODO throws NullNotesException, NoMusicException, ImageErrorException
 		this.song.play();

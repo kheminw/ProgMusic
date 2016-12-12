@@ -75,9 +75,25 @@ public class GameScreen extends Pane {
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-				hp.setHeight((PlayerStatus.getHp()/100)*120);
-				hp.setLayoutY(120-(PlayerStatus.getHp()/100)*120);
-
+				while(!PlayerStatus.isGameOver()){
+					hp.setHeight((PlayerStatus.getHp()/100)*120);
+					hp.setLayoutY(120-(PlayerStatus.getHp()/100)*120);
+					if(PlayerStatus.getHp() > 80){
+						hp.setFill(Color.LIME);
+					}
+					else if(PlayerStatus.getHp() > 60){
+						hp.setFill(Color.YELLOWGREEN);
+					}
+					else if(PlayerStatus.getHp() > 40){
+						hp.setFill(Color.YELLOW);
+					}
+					else if(PlayerStatus.getHp() > 20){
+						hp.setFill(Color.ORANGE);
+					}
+					else if(PlayerStatus.getHp() > 0){
+						hp.setFill(Color.RED);
+					}
+				}
 			}
 		});
 	

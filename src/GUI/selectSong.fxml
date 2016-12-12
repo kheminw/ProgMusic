@@ -80,13 +80,13 @@
       <Label layoutX="90.0" layoutY="413.0" text="Label" textFill="LIME" />
       <ImageView fitHeight="50.0" fitWidth="75.0" layoutX="699.0" layoutY="389.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../Downloads/play.png" />
+            <Image url="@../../../../Downloads/next.png" />
          </image>
       </ImageView>
       <Label layoutX="711.0" layoutY="405.0" text="Play" textFill="WHITE" />
       <ImageView fitHeight="50.0" fitWidth="75.0" layoutX="439.0" layoutY="389.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../Downloads/blue-back-button-clip-art.png" />
+            <Image url="@../../../../Downloads/back.png" />
          </image>
       </ImageView>
    </children>

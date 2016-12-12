@@ -69,7 +69,9 @@ public class DrawingUtility {
 		
 	}
 	public static List<Node> drawHoldButton(int r, long millis, Color color) throws InvalidDirectionException{
-		//millis can only be 2000, 1000 or 500 
+		//millis can only be 2000, 1000 or 500
+		float animationRatio = (float)millis/2000;
+		System.out.println(animationRatio);
 		List<Node> objects = new ArrayList<Node>();
 		Polygon leftTrapezoid = new Polygon();
 		leftTrapezoid.getPoints().addAll(new Double[] {310.0,70.0,315.0,91.0,295.0,91.0,300.0,70.0});
@@ -88,9 +90,9 @@ public class DrawingUtility {
 		note.setStrokeLineCap(StrokeLineCap.ROUND);
 		note.setFill(color);
 		note.setStroke(color);
-		ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(2000), note);
-		scaleTransition.setToX(6);
-		scaleTransition.setToY(2);
+		ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(millis), note);
+		scaleTransition.setToX(6*animationRatio);
+		scaleTransition.setToY(2*animationRatio);
 		FadeTransition fadeTransition = null;
 		FadeTransition fadeTransition2 = null;
 		TranslateTransition translateTransition = null;
@@ -99,18 +101,18 @@ public class DrawingUtility {
 			note.setLayoutX(400);
 			note.setStartX(-100);
 			note.setEndX(-90);
-			open = new ButtonOpenTransition(leftTrapezoid, 1);
-			fadeTransition = new FadeTransition(Duration.millis(2000), note);
+			open = new ButtonOpenTransition(leftTrapezoid, 1, Duration.millis(millis));
+			fadeTransition = new FadeTransition(Duration.millis(millis), note);
 			fadeTransition.setFromValue(0.5f);
 			fadeTransition.setToValue(1f);
-			fadeTransition2 = new FadeTransition(Duration.millis(2000), leftTrapezoid);
+			fadeTransition2 = new FadeTransition(Duration.millis(millis), leftTrapezoid);
 			fadeTransition2.setFromValue(0.5f);
 			fadeTransition2.setToValue(0.7f);
-			translateTransition = new TranslateTransition(Duration.millis(2000), note);
+			translateTransition = new TranslateTransition(Duration.millis(millis), note);
 			translateTransition.setFromX(0);
-			translateTransition.setToX(-80);
+			translateTransition.setToX(-80*animationRatio);
 			translateTransition.setFromY(0);
-			translateTransition.setToY(280);
+			translateTransition.setToY(280*animationRatio);
 			objects.add(note);
 			objects.add(leftTrapezoid);
 		}
@@ -118,18 +120,18 @@ public class DrawingUtility {
 			note.setLayoutX(485);
 			note.setStartX(-100);
 			note.setEndX(-90);
-			open = new ButtonOpenTransition(centerTrapezoid, 2);
-			fadeTransition = new FadeTransition(Duration.millis(2000), note);
+			open = new ButtonOpenTransition(centerTrapezoid, 2, Duration.millis(millis));
+			fadeTransition = new FadeTransition(Duration.millis(millis), note);
 			fadeTransition.setFromValue(0.5f);
 			fadeTransition.setToValue(1f);
-			fadeTransition2 = new FadeTransition(Duration.millis(2000), centerTrapezoid);
+			fadeTransition2 = new FadeTransition(Duration.millis(millis), centerTrapezoid);
 			fadeTransition2.setFromValue(0.5f);
 			fadeTransition2.setToValue(0.7f);
-			translateTransition = new TranslateTransition(Duration.millis(2000), note);
+			translateTransition = new TranslateTransition(Duration.millis(millis), note);
 			translateTransition.setFromX(0);
 			translateTransition.setToX(0);
 			translateTransition.setFromY(0);
-			translateTransition.setToY(280);
+			translateTransition.setToY(280*animationRatio);
 			objects.add(note);
 			objects.add(centerTrapezoid);
 		}
@@ -137,16 +139,16 @@ public class DrawingUtility {
 			note.setLayoutX(570);
 			note.setStartX(-100);
 			note.setEndX(-90);
-			open = new ButtonOpenTransition(rightTrapezoid, 3);
-			fadeTransition = new FadeTransition(Duration.millis(2000), note);
+			open = new ButtonOpenTransition(rightTrapezoid, 3, Duration.millis(millis));
+			fadeTransition = new FadeTransition(Duration.millis(millis), note);
 			fadeTransition.setFromValue(0.5f);
 			fadeTransition.setToValue(1f);
-			fadeTransition2 = new FadeTransition(Duration.millis(2000), rightTrapezoid);
+			fadeTransition2 = new FadeTransition(Duration.millis(millis), rightTrapezoid);
 			fadeTransition2.setFromValue(0.5f);
 			fadeTransition2.setToValue(0.7f);
-			translateTransition = new TranslateTransition(Duration.millis(2000), note);
+			translateTransition = new TranslateTransition(Duration.millis(millis), note);
 			translateTransition.setFromX(0);
-			translateTransition.setToX(80);
+			translateTransition.setToX(80*animationRatio);
 			translateTransition.setFromY(0);
 			translateTransition.setToY(280);
 			objects.add(note);

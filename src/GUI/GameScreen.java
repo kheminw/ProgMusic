@@ -42,8 +42,12 @@ public class GameScreen extends Pane {
 		mb.setRadius(63);
 		tapLine.setEffect(mb);
 		List<Node> objects = null;
+		List<Node> objects2 = null;
+		List<Node> objects3 = null;
 		try {
 			objects = DrawingUtility.drawHoldButton(3, 2000, Color.BLUE);
+			objects2 = DrawingUtility.drawHoldButton(2, 1000, Color.ALICEBLUE);
+			objects3 = DrawingUtility.drawHoldButton(1, 500, Color.AQUA);
 		} catch (InvalidDirectionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -51,6 +55,8 @@ public class GameScreen extends Pane {
 		this.getChildren().add(canvas);
 		this.getChildren().add(tapLine);
 		this.getChildren().addAll(objects);
-
+		this.getChildren().addAll(objects2);
+		this.getChildren().addAll(objects3);
+		
 	}
 }

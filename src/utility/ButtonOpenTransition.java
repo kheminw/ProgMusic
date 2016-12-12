@@ -19,9 +19,11 @@ public class ButtonOpenTransition extends Transition {
 	private Translate trapezoidTrans;
 	private Translate trapezoidTrans2;
 	private int direction = 1;
-	public ButtonOpenTransition(Polygon shape, int direction){
+	private Duration duration;
+	private float animationRatio; 
+	public ButtonOpenTransition(Polygon shape, int direction, Duration duration){
 		// TODO Auto-generated constructor stub
-		this.setCycleDuration(Duration.millis(2000));
+		this.setCycleDuration(duration);
 		this.polygon = shape;
 		this.points = polygon.getPoints().stream().mapToDouble(d -> d).toArray();
 		movablePoint1XOffset = points[0];
@@ -29,6 +31,8 @@ public class ButtonOpenTransition extends Transition {
 		movablePoint2XOffset = points[6];
 		movablePoint2YOffset = points[7];
 		if(direction >= 1 && direction <= 3) this.direction = direction;
+		this.duration = duration;
+		this.animationRatio = (float)(this.duration.toMillis())/2000;
 	}
 
 	@Override
@@ -40,16 +44,16 @@ public class ButtonOpenTransition extends Transition {
 		pointInterpolate[4] -= movablePoint2XOffset;
 		pointInterpolate[5] -= movablePoint2YOffset;
 		if(direction==1){
-			trapezoidTrans = new Translate(30*(float)percentage, 280*(float)percentage);
-			trapezoidTrans2 = new Translate(-130*(float)percentage, 280*(float)percentage);
+			trapezoidTrans = new Translate(30*(float)percentage*animationRatio, 280*(float)percentage*animationRatio);
+			trapezoidTrans2 = new Translate(-130*(float)percentage*animationRatio, 280*(float)percentage*animationRatio);
 		}
 		else if(direction==2){
-			trapezoidTrans = new Translate(-50*(float)percentage, 280*(float)percentage);
-			trapezoidTrans2 = new Translate(-50*(float)percentage, 280*(float)percentage);
+			trapezoidTrans = new Translate(-50*(float)percentage*animationRatio, 280*(float)percentage*animationRatio);
+			trapezoidTrans2 = new Translate(-50*(float)percentage*animationRatio, 280*(float)percentage*animationRatio);
 		}
 		else if(direction==3){
-			trapezoidTrans = new Translate(-130*(float)percentage, 280*(float)percentage);
-			trapezoidTrans2 = new Translate(30*(float)percentage, 280*(float)percentage);
+			trapezoidTrans = new Translate(-130*(float)percentage*animationRatio, 280*(float)percentage*animationRatio);
+			trapezoidTrans2 = new Translate(30*(float)percentage*animationRatio, 280*(float)percentage*animationRatio);
 		}
 		trapezoidTrans.transform2DPoints(pointInterpolate, 2, currentPoints, 2, 1);
 		trapezoidTrans2.transform2DPoints(pointInterpolate, 4, currentPoints, 4, 1);

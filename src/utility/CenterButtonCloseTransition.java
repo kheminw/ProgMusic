@@ -15,7 +15,10 @@ public class CenterButtonCloseTransition extends Transition {
 	double movablePoint1YOffset;
 	double movablePoint2XOffset;
 	double movablePoint2YOffset;
-	public CenterButtonCloseTransition(Polygon shape) {
+	private int direction;
+	private Duration duration;
+	private float animationRatio;
+	public CenterButtonCloseTransition(Polygon shape, int direction, Duration duration) {
 		// TODO Auto-generated constructor stub
 		for(double point: shape.getPoints()){
 			System.out.println(point);
@@ -27,6 +30,9 @@ public class CenterButtonCloseTransition extends Transition {
 		movablePoint1YOffset = points[3];
 		movablePoint2XOffset = points[4];
 		movablePoint2YOffset = points[5];
+		if(direction >= 1 &&direction <= 3) this.direction = direction;
+		this.duration = duration;
+		this.animationRatio = (float) (duration.toMillis()/2000);
 	}
 
 	@Override
@@ -34,6 +40,9 @@ public class CenterButtonCloseTransition extends Transition {
 		// TODO Auto-generated method stub
 		double[] pointInterpolate = points.clone();
 		double[] currentPoints = polygon.getPoints().stream().mapToDouble(d -> d).toArray().clone();
+		if(direction==1){
+			
+		}
 		pointInterpolate[0] = movablePoint1XOffset - pointInterpolate[0];
 		pointInterpolate[1] -= movablePoint1YOffset;
 		pointInterpolate[6] -= movablePoint2XOffset;

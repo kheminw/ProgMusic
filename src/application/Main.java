@@ -4,6 +4,7 @@ import GUI.GameScreen;
 import GUI.MenuScreen;
 import GUI.OptionScreen;
 import GUI.RenderableHolder;
+import GUI.SettingScreen;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -20,8 +21,8 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 			MenuScreen root = new MenuScreen();
 			GameScreen game = new GameScreen();
-			OptionScreen option = new OptionScreen();
-			Scene scene = new Scene(option,800,470);
+			SettingScreen setting = new SettingScreen();
+			Scene scene = new Scene(setting,800,470);
 			Canvas canvas = new Canvas(800, 470);
 			primaryStage.setScene(scene);
 			primaryStage.show();

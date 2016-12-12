@@ -9,6 +9,8 @@ import javafx.animation.FadeTransition;
 import javafx.animation.ParallelTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
@@ -68,8 +70,10 @@ public class DrawingUtility {
 		parallelTransition.play();
 		
 	}
-	public static List<Node> drawHoldButton(int r, long millis, Color color) throws InvalidDirectionException{
+	public static List<Node> drawHoldButton(int r, long millis, Color color) throws InvalidDirectionException, InvalidLengthException{
 		//millis can only be 2000, 1000 or 500
+		if(millis != 500 && millis != 1000 && millis != 2000) throw new InvalidLengthException();
+		
 		float animationRatio = (float)millis/2000;
 		System.out.println(animationRatio);
 		List<Node> objects = new ArrayList<Node>();
@@ -113,6 +117,27 @@ public class DrawingUtility {
 			translateTransition.setToX(-80*animationRatio);
 			translateTransition.setFromY(0);
 			translateTransition.setToY(280*animationRatio);
+			open.setOnFinished(new EventHandler<ActionEvent>(){
+				@Override
+				public void handle(ActionEvent event){
+					ButtonCloseTransition close = new ButtonCloseTransition(leftTrapezoid, 1, Duration.millis(millis));
+					FadeTransition fadeTransition3 = new FadeTransition(Duration.millis(2000), leftTrapezoid);
+					fadeTransition3.setFromValue(0.7f);
+					fadeTransition3.setToValue(0.7f);
+					TranslateTransition contTr = new TranslateTransition(Duration.millis(2000-millis), note);
+					contTr.setFromX(-80*animationRatio);
+					contTr.setToX(-80);
+					contTr.setFromY(280*animationRatio);
+					contTr.setToY(280);
+					ScaleTransition contSc = new ScaleTransition(Duration.millis(2000-millis), note);
+					contSc.setFromX(6*animationRatio);
+					contSc.setToX(6);
+					contSc.setFromY(2*animationRatio);
+					contSc.setToY(2);
+					ParallelTransition closeParallel = new ParallelTransition(close, fadeTransition3, contTr, contSc);
+					closeParallel.play();
+				}
+			});
 			objects.add(note);
 			objects.add(leftTrapezoid);
 		}
@@ -132,6 +157,27 @@ public class DrawingUtility {
 			translateTransition.setToX(0);
 			translateTransition.setFromY(0);
 			translateTransition.setToY(280*animationRatio);
+			open.setOnFinished(new EventHandler<ActionEvent>(){
+				@Override
+				public void handle(ActionEvent event){
+					ButtonCloseTransition close = new ButtonCloseTransition(centerTrapezoid, 2, Duration.millis(millis));
+					FadeTransition fadeTransition3 = new FadeTransition(Duration.millis(2000), centerTrapezoid);
+					fadeTransition3.setFromValue(0.7f);
+					fadeTransition3.setToValue(0.7f);
+					TranslateTransition contTr = new TranslateTransition(Duration.millis(2000-millis), note);
+					contTr.setFromX(0*animationRatio);
+					contTr.setToX(0);
+					contTr.setFromY(280*animationRatio);
+					contTr.setToY(280);
+					ScaleTransition contSc = new ScaleTransition(Duration.millis(2000-millis), note);
+					contSc.setFromX(6*animationRatio);
+					contSc.setToX(6);
+					contSc.setFromY(2*animationRatio);
+					contSc.setToY(2);
+					ParallelTransition closeParallel = new ParallelTransition(close, fadeTransition3, contTr, contSc);
+					closeParallel.play();
+				}
+			});
 			objects.add(note);
 			objects.add(centerTrapezoid);
 		}
@@ -150,7 +196,28 @@ public class DrawingUtility {
 			translateTransition.setFromX(0);
 			translateTransition.setToX(80*animationRatio);
 			translateTransition.setFromY(0);
-			translateTransition.setToY(280);
+			translateTransition.setToY(280*animationRatio);
+			open.setOnFinished(new EventHandler<ActionEvent>(){
+				@Override
+				public void handle(ActionEvent event){
+					ButtonCloseTransition close = new ButtonCloseTransition(rightTrapezoid, 3, Duration.millis(millis));
+					FadeTransition fadeTransition3 = new FadeTransition(Duration.millis(2000), rightTrapezoid);
+					fadeTransition3.setFromValue(0.7f);
+					fadeTransition3.setToValue(0.7f);
+					TranslateTransition contTr = new TranslateTransition(Duration.millis(2000-millis), note);
+					contTr.setFromX(80*animationRatio);
+					contTr.setToX(80);
+					contTr.setFromY(280*animationRatio);
+					contTr.setToY(280);
+					ScaleTransition contSc = new ScaleTransition(Duration.millis(2000-millis), note);
+					contSc.setFromX(6*animationRatio);
+					contSc.setToX(6);
+					contSc.setFromY(2*animationRatio);
+					contSc.setToY(2);
+					ParallelTransition closeParallel = new ParallelTransition(close, fadeTransition3, contTr, contSc);
+					closeParallel.play();
+				}
+			});
 			objects.add(note);
 			objects.add(rightTrapezoid);
 		}

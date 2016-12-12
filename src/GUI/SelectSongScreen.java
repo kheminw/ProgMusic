@@ -14,8 +14,10 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -192,7 +194,17 @@ public class SelectSongScreen extends Pane {
 		ftnote.setFromValue(0f);
 		ftnote.setToValue(1f);
 		ftnote.play();
-
+		
+		DropShadow dsAlbum = new DropShadow(BlurType.THREE_PASS_BOX	, Color.BLACK, 10, 0, 0, 0);
+		ds.setWidth(21);
+		ds.setHeight(21);
+		ImageView albumArt = new ImageView(RenderableHolder.albumArt[0]);
+		albumArt.setLayoutX(500);
+		albumArt.setLayoutY(40);
+		albumArt.setFitWidth(200);
+		albumArt.setFitHeight(150);
+		albumArt.setEffect(dsAlbum);
+		
 		firstSong.setOnMouseEntered(new EventHandler<Event>() {
 
 			@Override
@@ -225,6 +237,12 @@ public class SelectSongScreen extends Pane {
 				
 				if(currentSong == 2){
 					ParallelTransition out = new ParallelTransition();
+					
+					FadeTransition ftAlbum = new FadeTransition(Duration.millis(1500), albumArt);
+					ftAlbum.setFromValue(1.0f);
+					ftAlbum.setToValue(0f);
+					ftAlbum.setAutoReverse(true);
+					
 					FadeTransition ftbpmOut = new FadeTransition(Duration.millis(1500), bpm);
 					ftbpmOut.setFromValue(1.0f);
 					ftbpmOut.setToValue(0f);
@@ -234,7 +252,6 @@ public class SelectSongScreen extends Pane {
 					ttbpmOut.setToX(350);
 					ttbpmOut.setAutoReverse(true);
 
-					ParallelTransition ptartistOut = new ParallelTransition();
 					FadeTransition ftartistOut = new FadeTransition(Duration.millis(1500), artist);
 					ftartistOut.setFromValue(1.0f);
 					ftartistOut.setToValue(0f);
@@ -242,7 +259,6 @@ public class SelectSongScreen extends Pane {
 					ttartistOut.setFromX(0);
 					ttartistOut.setToX(300);
 					
-					ParallelTransition pttotalNoteOut = new ParallelTransition();
 					FadeTransition fttotalNoteOut = new FadeTransition(Duration.millis(1500), totalNote);
 					fttotalNoteOut.setFromValue(1.0f);
 					fttotalNoteOut.setToValue(0f);
@@ -251,11 +267,15 @@ public class SelectSongScreen extends Pane {
 					tttotalNoteOut.setFromX(0);
 					tttotalNoteOut.setToX(250);
 					tttotalNoteOut.setAutoReverse(true);
-					out.getChildren().addAll(ftbpmOut,ttbpmOut,ftartistOut,ttartistOut,fttotalNoteOut,tttotalNoteOut);
+					out.getChildren().addAll(ftbpmOut,ttbpmOut,ftartistOut,ttartistOut,fttotalNoteOut,tttotalNoteOut,ftAlbum);
 					
 					ParallelTransition in = new ParallelTransition();
-
-					ParallelTransition ptbpmIn = new ParallelTransition();
+					
+					FadeTransition ftAlbumIn = new FadeTransition(Duration.millis(1500), albumArt);
+					ftAlbumIn.setFromValue(0f);
+					ftAlbumIn.setToValue(1f);
+					ftAlbumIn.setAutoReverse(true);
+					
 					FadeTransition ftbpmIn = new FadeTransition(Duration.millis(1500), bpm);
 					ftbpmIn.setFromValue(0f);
 					ftbpmIn.setToValue(1f);
@@ -265,7 +285,6 @@ public class SelectSongScreen extends Pane {
 					ttbpmIn.setToX(0);
 					ttbpmIn.setAutoReverse(true);
 
-					ParallelTransition ptartistIn = new ParallelTransition();
 					FadeTransition ftartistIn = new FadeTransition(Duration.millis(1500), artist);
 					ftartistIn.setFromValue(0f);
 					ftartistIn.setToValue(1f);
@@ -275,7 +294,6 @@ public class SelectSongScreen extends Pane {
 					ttartistIn.setToX(0);
 					ttartistIn.setAutoReverse(true);
 
-					ParallelTransition pttotalNoteIn = new ParallelTransition();
 					FadeTransition fttotalNoteIn = new FadeTransition(Duration.millis(1500), totalNote);
 					fttotalNoteIn.setFromValue(0f);
 					fttotalNoteIn.setToValue(1f);
@@ -284,7 +302,7 @@ public class SelectSongScreen extends Pane {
 					tttotalNoteIn.setFromX(250);
 					tttotalNoteIn.setToX(0);
 					tttotalNoteIn.setAutoReverse(true);
-					in.getChildren().addAll(ftbpmIn,ttbpmIn,ftartistIn,ttartistIn,fttotalNoteIn,tttotalNoteIn);
+					in.getChildren().addAll(ftbpmIn,ttbpmIn,ftartistIn,ttartistIn,fttotalNoteIn,tttotalNoteIn,ftAlbumIn);
 					SequentialTransition seqT = new SequentialTransition (out,in);
 				    out.setOnFinished(new EventHandler<ActionEvent>() {
 						
@@ -294,6 +312,7 @@ public class SelectSongScreen extends Pane {
 							bpm.setText("BPM : 155");
 							artist.setText("Artist : Ice");
 							totalNote.setText("Total Note: 2000");
+							albumArt.setImage(RenderableHolder.albumArt[0]);
 						}
 					});
 					seqT.play();
@@ -333,9 +352,14 @@ public class SelectSongScreen extends Pane {
 				// TODO Auto-generated method stub
 				secondSong.setEffect(ds);
 				firstSong.setEffect(null);
-				currentSong = 2;
-				if(currentSong == 2){
+				if(currentSong == 1){
 					ParallelTransition out = new ParallelTransition();
+					
+					FadeTransition ftAlbumOut = new FadeTransition(Duration.millis(1500), albumArt);
+					ftAlbumOut.setFromValue(1.0f);
+					ftAlbumOut.setToValue(0f);
+					ftAlbumOut.setAutoReverse(true);
+					
 					FadeTransition ftbpmOut = new FadeTransition(Duration.millis(1500), bpm);
 					ftbpmOut.setFromValue(1.0f);
 					ftbpmOut.setToValue(0f);
@@ -362,11 +386,15 @@ public class SelectSongScreen extends Pane {
 					tttotalNoteOut.setFromX(0);
 					tttotalNoteOut.setToX(250);
 					tttotalNoteOut.setAutoReverse(true);
-					out.getChildren().addAll(ftbpmOut,ttbpmOut,ftartistOut,ttartistOut,fttotalNoteOut,tttotalNoteOut);
+					out.getChildren().addAll(ftbpmOut,ttbpmOut,ftartistOut,ttartistOut,fttotalNoteOut,tttotalNoteOut,ftAlbumOut);
 					
 					ParallelTransition in = new ParallelTransition();
+					
+					FadeTransition ftAlbumIn = new FadeTransition(Duration.millis(1500), albumArt);
+					ftAlbumIn.setFromValue(0f);
+					ftAlbumIn.setToValue(1f);
+					ftAlbumIn.setAutoReverse(true);
 
-					ParallelTransition ptbpmIn = new ParallelTransition();
 					FadeTransition ftbpmIn = new FadeTransition(Duration.millis(1500), bpm);
 					ftbpmIn.setFromValue(0f);
 					ftbpmIn.setToValue(1f);
@@ -376,7 +404,6 @@ public class SelectSongScreen extends Pane {
 					ttbpmIn.setToX(0);
 					ttbpmIn.setAutoReverse(true);
 
-					ParallelTransition ptartistIn = new ParallelTransition();
 					FadeTransition ftartistIn = new FadeTransition(Duration.millis(1500), artist);
 					ftartistIn.setFromValue(0f);
 					ftartistIn.setToValue(1f);
@@ -386,7 +413,6 @@ public class SelectSongScreen extends Pane {
 					ttartistIn.setToX(0);
 					ttartistIn.setAutoReverse(true);
 
-					ParallelTransition pttotalNoteIn = new ParallelTransition();
 					FadeTransition fttotalNoteIn = new FadeTransition(Duration.millis(1500), totalNote);
 					fttotalNoteIn.setFromValue(0f);
 					fttotalNoteIn.setToValue(1f);
@@ -395,7 +421,7 @@ public class SelectSongScreen extends Pane {
 					tttotalNoteIn.setFromX(250);
 					tttotalNoteIn.setToX(0);
 					tttotalNoteIn.setAutoReverse(true);
-					in.getChildren().addAll(ftbpmIn,ttbpmIn,ftartistIn,ttartistIn,fttotalNoteIn,tttotalNoteIn);
+					in.getChildren().addAll(ftbpmIn,ttbpmIn,ftartistIn,ttartistIn,fttotalNoteIn,tttotalNoteIn,ftAlbumIn);
 					SequentialTransition seqT = new SequentialTransition (out,in);
 				    out.setOnFinished(new EventHandler<ActionEvent>() {
 						
@@ -405,16 +431,18 @@ public class SelectSongScreen extends Pane {
 							bpm.setText("BPM : 200");
 							artist.setText("Artist : Xi");
 							totalNote.setText("Total Note: 2000");
+							albumArt.setImage(RenderableHolder.albumArt[1]);
 						}
 					});
 					seqT.play();
 					
 				}
+				currentSong = 2;
 			}
 		});
 
 		this.getChildren().addAll(canvas, open, splitW, split, firstSong, secondSong, scorePercent, score, scoreLabel,
-				perfect, good, miss, perfectNote, goodNote, missNote, bpm, artist, totalNote);
+				perfect, good, miss, perfectNote, goodNote, missNote, bpm, artist, totalNote,albumArt);
 
 	}
 

@@ -25,7 +25,7 @@ public class GameScreen extends Pane {
 	private Canvas canvas;
 	private GraphicsContext gc;
 	private Text currentScore;
-	
+	private Rectangle hp ;
 	public GameScreen() {
 		
 		
@@ -65,11 +65,13 @@ public class GameScreen extends Pane {
 		this.getChildren().addAll(objects);
 		this.getChildren().addAll(objects2);
 		this.getChildren().addAll(objects3);
-		Rectangle highHp = new Rectangle(30, 200);
-		highHp.setLayoutX(30);
-		highHp.setLayoutY(120);
-		highHp.setFill(Color.LIMEGREEN);
-		if(PlayerStatus.getHp() > 85){
+		hp = new Rectangle(30, 200);
+		hp.setLayoutX(30);
+		hp.setLayoutY(120);
+		hp.setFill(Color.LIMEGREEN);
+		if(PlayerStatus.getHp() < 85 && PlayerStatus.getHp()>70){
+			hp.setHeight((PlayerStatus.getHp()/100)*120);
+			hp.setLayoutY(120-(PlayerStatus.getHp()/100)*120);
 		}
 		
 	}

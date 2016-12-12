@@ -3,18 +3,21 @@ package GUI;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import javafx.scene.image.Image;
-
+import javafx.scene.media.Media;
 
 public class RenderableHolder {
 	private List<IRenderable> entities;
 	public static Image[] bg;
 	public static Image[] note;
+	public static Image[] albumArt;
+	public static Media[] song;
 	final static RenderableHolder instance = new RenderableHolder();
 	public RenderableHolder(){
 		entities = new ArrayList<>();
 		bg = new Image[5];
+		albumArt = new Image[2];
+		song = new Media[2];
 	}
 	
 	static{
@@ -31,6 +34,10 @@ public class RenderableHolder {
 		bg[2] = new Image(ClassLoader.getSystemResource("option-wallpaper.jpg").toString());
 		bg[3] = new Image(ClassLoader.getSystemResource("GameScreen.jpeg").toString());
 		bg[4] = new Image(ClassLoader.getSystemResource("SelectSong.jpg").toString());
+		albumArt[0] = new Image(ClassLoader.getSystemResource("L.jpg").toString());
+		albumArt[1] = new Image(ClassLoader.getSystemResource("ANiMA.jpg").toString());
+		song[0] = new Media(ClassLoader.getSystemResource("L.wav").toString());
+		song[1] = new Media(ClassLoader.getSystemResource("ANiMA.wav").toString());
 	}
 	
 	public synchronized void remove(int index){

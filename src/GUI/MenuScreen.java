@@ -50,6 +50,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import logic.MainLogic;
 
 public class MenuScreen extends Pane{
 	private Canvas canvas;
@@ -144,13 +145,20 @@ public class MenuScreen extends Pane{
 			}
 		});
 		
+		start.setOnMouseClicked(new EventHandler<Event>(){
+			@Override
+			public void handle(Event event){
+				MainLogic.instance.switchScreen("GameScreen");
+			}
+		});
+		
 		option.setOnMouseEntered(new EventHandler<Event>() {
 
 			@Override
 			public void handle(Event event) {
 				// TODO Auto-generated method stub
 				option.setEffect(ds);
-
+				
 			}
 		});
 		
@@ -162,6 +170,13 @@ public class MenuScreen extends Pane{
 				option.setEffect(null);
 				//start.setStyle(startStyle);
 				option.setFill(lg2);
+			}
+		});
+		
+		option.setOnMouseClicked(new EventHandler<Event>(){
+			@Override
+			public void handle(Event event){
+				MainLogic.instance.switchScreen("SettingScreen");
 			}
 		});
 		

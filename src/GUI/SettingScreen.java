@@ -30,6 +30,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
+import logic.MainLogic;
 import javafx.scene.text.*;
 
 public class SettingScreen extends VBox {
@@ -113,6 +114,13 @@ public class SettingScreen extends VBox {
 		clearHighScore.setFont(buttonFont);
 		Button back = new Button("Back");
 		back.setFont(buttonFont);
+		back.setOnAction(new EventHandler<ActionEvent>(){
+			@Override
+			public void handle(ActionEvent event){
+				MainLogic.instance.switchScreen("MenuScreen");
+			}
+		});
+		
 		HBox restore = new HBox(50);
 		
 		ToggleButton tb = new ToggleButton("Difficulty : Easy");

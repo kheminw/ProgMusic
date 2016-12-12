@@ -4,52 +4,46 @@ import java.util.ArrayList;
 
 import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 public class Song {
 	
 	private ArrayList<GameButton> notes = new ArrayList<GameButton>();
 	private long totalTime;
-	private int stars;
 	private String title;
 	private String artist;
 	private Image albumArt;
-	private AudioClip song;
+	private Media song;
 	private int highScore = 0;
 	
 	public Song() {
 		//default constructor
 		//setters should be used to set values (especially notes)
 		this.totalTime = 0;
-		this.stars = 0;
 		this.title = "";
 		this.artist = "";
 		this.albumArt = null;
 		this.song = null;
 	}
 	
-	public Song(long totalTime, int stars, String title, String artist, Image albumArt, AudioClip song){
+	public Song(long totalTime, String title, String artist, Image albumArt, Media song){
 		this.totalTime = totalTime;
-		this.stars = stars;
 		this.title = title;
 		this.artist = artist;
 		this.albumArt = albumArt;
 		this.song = song;
 	}
 
+	public int getTotalNotes(){
+		return notes.size();
+	}
 	public long getTotalTime() {
 		return totalTime;
 	}
 
 	public void setTotalTime(long totalTime) {
 		this.totalTime = totalTime;
-	}
-
-	public int getStars() {
-		return stars;
-	}
-
-	public void setStars(int stars) {
-		this.stars = stars;
 	}
 
 	public String getTitle() {
@@ -76,11 +70,11 @@ public class Song {
 		this.albumArt = albumArt;
 	}
 
-	public AudioClip getSong() {
+	public Media getSong() {
 		return song;
 	}
 
-	public void setSong(AudioClip song) {
+	public void setSong(Media song) {
 		this.song = song;
 	}
 	
@@ -100,7 +94,8 @@ public class Song {
 	}
 	public void play(){
 		//TODO throws NullNotesException, NoMusicException, ImageErrorException
-		this.song.play();
+		MediaPlayer player = new MediaPlayer(song);
+		player.play();
 		//TODO draw notes
 	}
 }

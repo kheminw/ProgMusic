@@ -1,6 +1,8 @@
 package logic;
 
-public abstract class GameButton implements Tappable {
+import GUI.IRenderable;
+
+public abstract class GameButton implements Tappable, IRenderable {
 	
 	protected long spawnTime;
 	protected int score;
@@ -19,6 +21,9 @@ public abstract class GameButton implements Tappable {
 	
 	//classes that inherit this class should also set the value of destroyed 
 	abstract public void hit();
+	abstract public int getZ();
+	abstract public boolean isVisible();
+	abstract public void draw();
 	
 	public boolean checkGrade() {
 		if(Math.abs(this.buttonDownTime - Timeline.instance.getTime()) == 25){

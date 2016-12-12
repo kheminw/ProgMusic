@@ -11,6 +11,7 @@ import GUI.SettingScreen;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import logic.MainLogic;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -22,11 +23,8 @@ import javafx.scene.layout.BorderPane;
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws FileNotFoundException {
-			MenuScreen root = new MenuScreen();
-			GameScreen game = new GameScreen();
-			SettingScreen setting = new SettingScreen();
-			SelectSongScreen select = new SelectSongScreen();
-			Scene scene = new Scene(select,800,470);
+			Scene scene = MainLogic.instance.getCurrentScreen();
+			primaryStage.setTitle("ProgMusic");
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		

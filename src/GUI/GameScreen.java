@@ -18,6 +18,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import utility.DrawingUtility;
 import utility.InvalidDirectionException;
+import utility.InvalidLengthException;
 
 public class GameScreen extends Pane {
 	private Canvas canvas;
@@ -48,10 +49,10 @@ public class GameScreen extends Pane {
 		List<Node> objects2 = null;
 		List<Node> objects3 = null;
 		try {
-			objects = DrawingUtility.drawHoldButton(3, 2000, Color.BLUE);
-			objects2 = DrawingUtility.drawHoldButton(2, 1000, Color.ALICEBLUE);
+			objects = DrawingUtility.drawHoldButton(3, 1000, Color.BLUE);
+			objects2 = DrawingUtility.drawHoldButton(2, 500, Color.ALICEBLUE);
 			objects3 = DrawingUtility.drawHoldButton(1, 500, Color.AQUA);
-		} catch (InvalidDirectionException e) {
+		} catch (InvalidDirectionException | InvalidLengthException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

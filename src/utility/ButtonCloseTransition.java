@@ -8,7 +8,7 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.transform.Translate;
 import javafx.util.Duration;
 
-public class CenterButtonCloseTransition extends Transition {
+public class ButtonCloseTransition extends Transition {
 	private Polygon polygon;
 	private double[] points;
 	double movablePoint1XOffset;
@@ -18,7 +18,11 @@ public class CenterButtonCloseTransition extends Transition {
 	private int direction;
 	private Duration duration;
 	private float animationRatio;
-	public CenterButtonCloseTransition(Polygon shape, int direction, Duration duration) {
+	private Translate trapezoidTrans;
+	private Translate trapezoidTrans2;
+	private Translate trapezoidTrans3;
+	private Translate trapezoidTrans4;
+	public ButtonCloseTransition(Polygon shape, int direction, Duration duration) {
 		// TODO Auto-generated constructor stub
 		for(double point: shape.getPoints()){
 			System.out.println(point);
@@ -32,7 +36,7 @@ public class CenterButtonCloseTransition extends Transition {
 		movablePoint2YOffset = points[5];
 		if(direction >= 1 &&direction <= 3) this.direction = direction;
 		this.duration = duration;
-		this.animationRatio = (float) (duration.toMillis()/2000);
+		this.animationRatio = (float) (this.duration.toMillis()/2000);
 	}
 
 	@Override
@@ -41,7 +45,22 @@ public class CenterButtonCloseTransition extends Transition {
 		double[] pointInterpolate = points.clone();
 		double[] currentPoints = polygon.getPoints().stream().mapToDouble(d -> d).toArray().clone();
 		if(direction==1){
-			
+			trapezoidTrans = new Translate(30*(float)percentage*(1), 280*(float)percentage);
+			trapezoidTrans2 = new Translate(-130*(float)percentage*(1), 280*(float)percentage);
+			trapezoidTrans3 = new Translate(30*(float)percentage*(1), (280*(float)percentage)+(10*(float)percentage*(animationRatio)));
+			trapezoidTrans4 = new Translate(-130*(float)percentage*(1), (280*(float)percentage)+(10*(float)percentage*(animationRatio)));
+		}
+		else if(direction==2){
+			trapezoidTrans = new Translate(-50*(float)percentage*(1), 280*(float)percentage);
+			trapezoidTrans2 = new Translate(-50*(float)percentage*(1), 280*(float)percentage);
+			trapezoidTrans3 = new Translate(-50*(float)percentage*(1), 280*(float)percentage);
+			trapezoidTrans4 = new Translate(-50*(float)percentage*(1), 280*(float)percentage);
+		}
+		else if(direction==3){
+			trapezoidTrans = new Translate(-130*(float)percentage*(1), 280*(float)percentage);
+			trapezoidTrans2 = new Translate(30*(float)percentage*(1), 280*(float)percentage);
+			trapezoidTrans3 = new Translate(-130*(float)percentage*(1), 280*(float)percentage);
+			trapezoidTrans4 = new Translate(30*(float)percentage*(1), 280*(float)percentage);
 		}
 		pointInterpolate[0] = movablePoint1XOffset - pointInterpolate[0];
 		pointInterpolate[1] -= movablePoint1YOffset;
@@ -51,16 +70,13 @@ public class CenterButtonCloseTransition extends Transition {
 		pointInterpolate[3] = 0;
 		pointInterpolate[4] = 0;
 		pointInterpolate[5] = 0;
-		Translate trapezoidTrans = new Translate(-37.5*(float)percentage, 280*(float)percentage);
-		Translate trapezoidTrans2 = new Translate(-37.5*(float)percentage, 280*(float)percentage);
-		Translate trapezoidTrans3 = new Translate(-30*(float)percentage, 280*(float)percentage);
-		//Translate trapezoidTrans4 = new Translate()
 		//Scale trapezoidScale = new Scale(6*(float)percentage, 14*(float)percentage);
 		
-		if(Double.compare(percentage, 0.8) <=0){
+		if(Double.compare(percentage, 1-animationRatio) <=0){
 			trapezoidTrans.transform2DPoints(pointInterpolate, 0, currentPoints, 0, 1);
 			trapezoidTrans2.transform2DPoints(pointInterpolate, 6, currentPoints, 6, 1);
-			trapezoidTrans3.transform2DPoints(pointInterpolate, 2, currentPoints, 2, 2);
+			trapezoidTrans3.transform2DPoints(pointInterpolate, 2, currentPoints, 2, 1);
+			trapezoidTrans4.transform2DPoints(pointInterpolate, 4, currentPoints, 4, 1);
 			currentPoints[0] = movablePoint1XOffset - currentPoints[0];
 			currentPoints[1] += movablePoint1YOffset;
 			currentPoints[6] += movablePoint2XOffset;

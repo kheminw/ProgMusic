@@ -42,8 +42,8 @@ public class CenterButtonCloseTransition extends Transition {
 		pointInterpolate[3] = 0;
 		pointInterpolate[4] = 0;
 		pointInterpolate[5] = 0;
-		Translate trapezoidTrans = new Translate(-37.5*(float)percentage, 280*(float)percentage);
-		Translate trapezoidTrans2 = new Translate(-37.5*(float)percentage, 280*(float)percentage);
+		Translate trapezoidTrans = new Translate(-30*(float)percentage, 280*(float)percentage);
+		Translate trapezoidTrans2 = new Translate(-30*(float)percentage, 280*(float)percentage);
 		Translate trapezoidTrans3 = new Translate(-30*(float)percentage, 280*(float)percentage);
 		//Translate trapezoidTrans4 = new Translate()
 		//Scale trapezoidScale = new Scale(6*(float)percentage, 14*(float)percentage);

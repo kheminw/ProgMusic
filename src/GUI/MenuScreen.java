@@ -2,6 +2,7 @@ package GUI;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import org.w3c.dom.events.EventTarget;
@@ -20,7 +21,10 @@ import javafx.scene.Parent;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.Image;
@@ -137,6 +141,20 @@ public class MenuScreen extends Pane{
 				//start.setStyle(startStyle);
 				exit.setStroke(Color.BLACK);
 				exit.setFill(Color.WHITE);
+			}
+		});
+		
+		exit.setOnMouseClicked(new EventHandler<Event>(){
+			@Override
+			public void handle(Event event){
+				Alert exitConfirm = new Alert(AlertType.CONFIRMATION);
+				exitConfirm.setTitle("Exit");
+				exitConfirm.setHeaderText(null);
+				exitConfirm.setContentText("Are you sure you want to exit the game?");
+				Optional<ButtonType> result = exitConfirm.showAndWait();
+				if((result.isPresent()) &&(result.get() == ButtonType.OK)){
+					System.exit(0);
+				}
 			}
 		});
 	}

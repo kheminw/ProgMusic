@@ -4,6 +4,7 @@ import GUI.GameScreen;
 import GUI.MenuScreen;
 import GUI.SettingScreen;
 import GUI.RenderableHolder;
+import GUI.SettingScreen;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;

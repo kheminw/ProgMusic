@@ -53,7 +53,7 @@ public class MenuScreen extends Pane{
 		start.setStroke(Color.BLACK);
 		start.setFill(Color.WHITE);
 		
-		option = new Text(500,200,"Option");
+		option = new Text(500,200,"Setting");
 		option.setStyle("-fx-font: 30px Designosaur;");
 		option.setStrokeWidth(0.1);
 		option.setStroke(Color.BLACK);

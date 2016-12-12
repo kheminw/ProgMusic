@@ -16,4 +16,22 @@ public class SlideButton extends GameButton {
 		}
 	}
 
+	@Override
+	public int getZ() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean isVisible() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void draw() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

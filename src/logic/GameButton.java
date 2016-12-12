@@ -26,7 +26,7 @@ public abstract class GameButton implements Tappable, IRenderable {
 	abstract public void draw();
 	
 	public boolean checkGrade() {
-		if(Math.abs(this.buttonDownTime - Timeline.instance.getTime()) == 25){
+		if(Math.abs(this.buttonDownTime - Timeline.instance.getTime()) <= GameManager.perfectDelay*PlayerStatus.getMode()){
 			//TODO gui.displayPerfect();
 			PlayerStatus.setScore(score);
 			PlayerStatus.setHp(5);
@@ -35,7 +35,7 @@ public abstract class GameButton implements Tappable, IRenderable {
 			this.hit = true;
 			return true;
 		}
-		else if(Math.abs(this.buttonDownTime - Timeline.instance.getTime()) == 50){
+		else if(Math.abs(this.buttonDownTime - Timeline.instance.getTime()) <= GameManager.goodDelay*PlayerStatus.getMode()){
 			//TODO gui.displayGood();
 			PlayerStatus.setScore(score);
 			PlayerStatus.setHp(3);
@@ -61,7 +61,7 @@ public abstract class GameButton implements Tappable, IRenderable {
 	@Override
 	public boolean isActivated() {
 		// TODO Auto-generated method stub
-		return Math.abs(this.buttonDownTime - Timeline.instance.getTime())==120;
+		return Math.abs(this.buttonDownTime - Timeline.instance.getTime())<=GameManager.activationDelay;
 	}
 
 }

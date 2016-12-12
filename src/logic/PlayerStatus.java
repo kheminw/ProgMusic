@@ -9,6 +9,7 @@ public class PlayerStatus {
 	private static boolean isPause = false;
 	private static int combo = 0;
 	private static int maxCombo = 0;
+	private static int currentMode = 2;
 	public PlayerStatus() {
 		// TODO Auto-generated constructor stub
 	}
@@ -71,6 +72,23 @@ public class PlayerStatus {
 	}
 	public static void resetCombo(){
 		combo = 0;
+	}
+	public static void setMode(int mode){
+		currentMode = mode;
+		if(mode < 1 || mode > 3) currentMode = 2;
+	}
+	public static float getMode(){
+		switch(currentMode){
+		case 1:
+			return GameManager.easyModifier;
+		case 2: 
+			return 1f;
+		case 3:
+			return GameManager.hardModifier;
+		default:
+			setMode(2);
+			return 1f;
+		}
 	}
 	public static void initialize(){
 		score = 0;

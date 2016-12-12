@@ -36,8 +36,8 @@ public class RenderableHolder {
 		bg[4] = new Image(ClassLoader.getSystemResource("SelectSong.jpg").toString());
 		albumArt[0] = new Image(ClassLoader.getSystemResource("L.jpg").toString());
 		albumArt[1] = new Image(ClassLoader.getSystemResource("ANiMA.jpg").toString());
-		song[0] = new Media(ClassLoader.getSystemResource("L.wav").toString());
-		song[1] = new Media(ClassLoader.getSystemResource("ANiMA.wav").toString());
+		song[0] = new Media(ClassLoader.getSystemResource("L.mp3").toString());
+		song[1] = new Media(ClassLoader.getSystemResource("ANiMA.mp3").toString());
 	}
 	
 	public synchronized void remove(int index){

@@ -148,7 +148,7 @@ public class MenuScreen extends Pane{
 		start.setOnMouseClicked(new EventHandler<Event>(){
 			@Override
 			public void handle(Event event){
-				MainLogic.instance.switchScreen("GameScreen");
+				MainLogic.instance.switchScreen("SelectSongScreen");
 			}
 		});
 		

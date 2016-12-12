@@ -16,6 +16,7 @@ import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.shape.StrokeLineJoin;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import logic.PlayerStatus;
 import utility.DrawingUtility;
 import utility.InvalidDirectionException;
 import utility.InvalidLengthException;
@@ -32,6 +33,9 @@ public class GameScreen extends Pane {
 		this.canvas = new Canvas(800, 470);
 		gc = canvas.getGraphicsContext2D();
 		gc.drawImage(RenderableHolder.bg[3], 0, 0,800,470);
+		gc.setStroke(Color.BLACK);
+		gc.setLineWidth(1);
+		gc.strokeRoundRect(30, 120, 30, 200, 5, 5);
 		Line tapLine = new Line();
 		tapLine.setStyle("-fx-stroke:#f0f1f5");
 		tapLine.setEndX(350);
@@ -61,6 +65,12 @@ public class GameScreen extends Pane {
 		this.getChildren().addAll(objects);
 		this.getChildren().addAll(objects2);
 		this.getChildren().addAll(objects3);
+		Rectangle highHp = new Rectangle(30, 200);
+		highHp.setLayoutX(30);
+		highHp.setLayoutY(120);
+		highHp.setFill(Color.LIMEGREEN);
+		if(PlayerStatus.getHp() > 85){
+		}
 		
 	}
 }

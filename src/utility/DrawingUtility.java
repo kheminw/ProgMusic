@@ -1,5 +1,8 @@
 package utility;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,9 +19,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.StrokeLineCap;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 
-public class DrawingUtility {
+public class DrawingUtility   {
+
 	public static void drawTapButton(int r) {
 		Line note = new Line();
 
@@ -232,5 +238,24 @@ public class DrawingUtility {
 	public synchronized static void addPoints(Polygon polygon, double[] array){
 		polygon.getPoints().clear();
 		polygon.getPoints().addAll(Arrays.stream(array).boxed().collect(Collectors.toList()));
+	}
+	
+	public static void displayPerfect()throws FileNotFoundException{
+		Font f = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Regular.otf")), 24);
+		Text perfect = new Text(360, 150, "Perfect");
+		perfect.setFont(f);
+		perfect.setFill(Color.LIME);
+	}
+	public static void displayGood()throws FileNotFoundException{
+		Font f = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Regular.otf")), 24);
+		Text good = new Text(360, 150, "Good");
+		good.setFont(f);
+		good.setFill(Color.YELLOW);
+	}
+	public static void displayMiss()throws FileNotFoundException{
+		Font f = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Regular.otf")), 24);
+		Text miss = new Text(360, 150, "Miss");
+		miss.setFont(f);
+		miss.setFill(Color.RED);
 	}
 }

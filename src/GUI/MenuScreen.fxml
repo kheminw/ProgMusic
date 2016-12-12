@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
@@ -10,7 +11,7 @@
 
 <Pane fx:id="Pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="800.0" scaleShape="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MenuScreenController">
    <children>
-      <ImageView fitHeight="577.0" fitWidth="800.0"  pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="577.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../Downloads/fixbg.jpg" />
          </image>
@@ -20,7 +21,7 @@
             <Image url="@../../../../Downloads/Prog-Music-2.png" />
          </image>
       </ImageView>
-      <Label fx:id="startLabel" layoutX="474.0" layoutY="150.0" mouseTransparent="true"  text="START" textOverrun="CENTER_ELLIPSIS">
+      <Label fx:id="startLabel" layoutX="474.0" layoutY="150.0" mouseTransparent="true" text="START" textOverrun="CENTER_ELLIPSIS">
          <font>
             <Font name="Designosaur" size="32.0" />
          </font>
@@ -28,7 +29,7 @@
             <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.5144230769230769">
                <stops>
                   <Stop color="#6d90b8" />
-                  <Stop color="#2296ee" offset="1.0" />
+                  <Stop color="#99d4ff" offset="1.0" />
                </stops>
             </LinearGradient>
          </textFill>
@@ -53,5 +54,6 @@
          </font>
       </Label>
       <Button fx:id="start" layoutX="468.0" layoutY="150.0" mnemonicParsing="false" onAction="#setStart" prefHeight="30.0" prefWidth="98.0" text="Button" visible="false" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="470.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="800.0" />
    </children>
 </Pane>

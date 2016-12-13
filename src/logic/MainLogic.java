@@ -41,7 +41,6 @@ public class MainLogic {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		game = new GameScreen();
 		main = new Scene(menu, 800, 470);
 		Song L = new Song((long) RenderableHolder.song[0].getDuration().toMillis(), "L", "Ice",

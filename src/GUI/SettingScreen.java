@@ -39,7 +39,9 @@ public class SettingScreen extends VBox {
 	private Font titleFont = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Light.otf")), 30);
 	private Font f = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Light.otf")), 15);
 	private Font buttonFont = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Light.otf")), 12);
-	
+	private	Slider soundBar;
+	private	Slider brightBar;
+
 	public SettingScreen() throws FileNotFoundException{
 		
 	   
@@ -55,7 +57,7 @@ public class SettingScreen extends VBox {
 		
 		//Sound
 		HBox volume = new HBox(50);
-		final Slider soundBar = new Slider(0, 100, 100);
+		soundBar = new Slider(0, 100, 100);
 		soundBar.setBlockIncrement(10);
 		soundBar.setLayoutX(50);
 		soundBar.setLayoutY(200);
@@ -73,11 +75,12 @@ public class SettingScreen extends VBox {
 			public void changed(ObservableValue observable, Object oldValue, Object newValue) {
 				// TODO Auto-generated method stub
 				soundValue.textProperty().setValue( String.valueOf((int)soundBar.getValue()));
+				MainLogic.instance.getMp().setVolume(soundBar.getValue()/100);
 			}
 		});
 		//bright
 		HBox brightness = new HBox(50);
-		final Slider brightBar = new Slider(0, 100, 100);
+		brightBar = new Slider(0, 100, 100);
 		brightBar.setBlockIncrement(10);
 		brightBar.setLayoutX(50);
 		brightBar.setLayoutY(200);
@@ -164,5 +167,13 @@ public class SettingScreen extends VBox {
 		// new Background(images...)
 		Background background = new Background(backgroundImage);
 		this.setBackground(background);
+	}
+
+	public Slider getSoundBar() {
+		return soundBar;
+	}
+
+	public Slider getBrightBar() {
+		return brightBar;
 	}
 }

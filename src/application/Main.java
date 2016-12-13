@@ -35,9 +35,6 @@ import javafx.scene.media.MediaPlayer;
  */
 public class Main extends Application {
 	
-    /** The brightness. */
-    private IntegerProperty brightness = new SimpleIntegerProperty();
-
 	/* (non-Javadoc)
 	 * @see javafx.application.Application#start(javafx.stage.Stage)
 	 */

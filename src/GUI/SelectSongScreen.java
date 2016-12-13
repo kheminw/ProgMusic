@@ -25,6 +25,7 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
@@ -356,7 +357,7 @@ public class SelectSongScreen extends Pane {
 				MainLogic.instance.setSong(MainLogic.instance.getMedia());
 				MainLogic.instance.getMp().play();
 				MainLogic.instance.getMp().setVolume(MainLogic.instance.getVolume());
-
+				MainLogic.instance.getMp().setCycleCount(MediaPlayer.INDEFINITE);
 				currentSong = 1;
 			}
 		});
@@ -476,7 +477,7 @@ public class SelectSongScreen extends Pane {
 							MainLogic.instance.setSong(MainLogic.instance.getMedia());
 							MainLogic.instance.getMp().play();
 							MainLogic.instance.getMp().setVolume(MainLogic.instance.getVolume());
-
+							MainLogic.instance.getMp().setCycleCount(MediaPlayer.INDEFINITE);
 						}
 					});
 					seqT.play();

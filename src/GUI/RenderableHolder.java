@@ -12,12 +12,14 @@ public class RenderableHolder {
 	public static Image[] note;
 	public static Image[] albumArt;
 	public static Media[] song;
+	public static Media[] previewSong;
 	final static RenderableHolder instance = new RenderableHolder();
 	public RenderableHolder(){
 		entities = new ArrayList<>();
 		bg = new Image[7];
 		albumArt = new Image[2];
 		song = new Media[2];
+		previewSong = new Media[2];
 	}
 	
 	static{
@@ -40,6 +42,8 @@ public class RenderableHolder {
 		albumArt[1] = new Image(ClassLoader.getSystemResource("ANiMA.jpg").toString());
 		song[0] = new Media(ClassLoader.getSystemResource("L.mp3").toString());
 		song[1] = new Media(ClassLoader.getSystemResource("ANiMA.mp3").toString());
+		previewSong[0] = new Media(ClassLoader.getSystemResource("Lpreview.mp3").toString());
+		previewSong[1] = new Media(ClassLoader.getSystemResource("ANiMA.mp3").toString());
 	}
 	
 	public synchronized void remove(int index){

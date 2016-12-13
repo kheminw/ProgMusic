@@ -61,6 +61,8 @@ public class SelectSongScreen extends Pane {
 		ds.setOffsetX(2.0f);
 		ds.setOffsetY(2.0f);
 		ds.setColor(Color.YELLOW);
+		
+		
 		FadeTransition fadeTransition = new FadeTransition(Duration.millis(3000), open);
 		fadeTransition.setFromValue(1.0f);
 		fadeTransition.setToValue(0.3f);

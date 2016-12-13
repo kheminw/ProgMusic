@@ -78,7 +78,7 @@ public class GameScreen extends Pane {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-		GameManager gm = new GameManager(MainLogic.instance.getSongSet().get(SelectSongScreen.getCurrentSong()));
+		GameManager gm = new GameManager(MainLogic.instance.getSongSet().get(SelectSongScreen.getCurrentSong()), this);
 		this.getChildren().add(canvas);
 		this.getChildren().add(tapLine);
 //		this.getChildren().addAll(objects);
@@ -116,5 +116,14 @@ public class GameScreen extends Pane {
 			}
 		});
 	
+	}
+	public synchronized void addNote(Node node){
+		this.getChildren().add(node);
+	}
+	public synchronized void addLongNote(List<Node> nodes){
+		this.getChildren().addAll(nodes);
+	}
+	public synchronized void removeNote(Node node){
+		this.getChildren().remove(node);
 	}
 }

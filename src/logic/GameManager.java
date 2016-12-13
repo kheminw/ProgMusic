@@ -1,6 +1,12 @@
 package logic;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+
+import GUI.GameScreen;
 import javafx.application.Platform;
+import javafx.event.EventHandler;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.media.MediaPlayer;
 
 // TODO: Auto-generated Javadoc
@@ -8,20 +14,25 @@ import javafx.scene.media.MediaPlayer;
  * The Class GameManager.
  */
 public class GameManager {
-	
+
 	public static final int perfectDelay = 50;
 	public static final int goodDelay = 100;
 	public static final int activationDelay = 200;
 	public static final int drawDelay = 2000;
 	public static final float hardModifier = 0.5f;
 	public static final float easyModifier = 1.5f;
-	
+
 	private static long currentTime;
 	private static long endTime;
 	private static Song currentSong;
 	private Thread timer;
-	public GameManager(Song song) {
+	private Thread drawer;
+	private ScheduledExecutorService exec = Executors.newScheduledThreadPool(10);
+	private GameScreen gameScreen;
+
+	public GameManager(Song song, GameScreen game) {
 		// TODO Auto-generated constructor stub
+		this.gameScreen = game;
 		currentSong = song;
 		currentTime = 0;
 		endTime = currentSong.getTotalTime();
@@ -37,12 +48,6 @@ public class GameManager {
 				System.out.println(endTime);
 				while(currentTime < endTime){
 					currentTime = (long) MainLogic.instance.getMp().currentTimeProperty().get().toMillis();
-					for(long time: currentSong.getNotes().keySet()){
-						if(time - drawDelay <= currentTime){
-							
-						}
-					}
-					//System.out.println("Time: " + currentTime + " Ends at: " + endTime);
 					if(currentTime>endTime-1000) break;
 				}
 				MainLogic.instance.getMp().stop();
@@ -52,6 +57,32 @@ public class GameManager {
 						MainLogic.instance.switchScreen("MenuScreen");
 					}
 				});
+			}
+		});
+		gameScreen.setOnKeyPressed(new EventHandler<KeyEvent>(){
+			@Override
+			public void handle(KeyEvent k){
+				System.out.println(currentTime);
+			}
+		});
+		Platform.runLater(() -> gameScreen.requestFocus());
+		drawer = new Thread(new Runnable(){
+			@Override
+			public void run(){
+				for(long time: currentSong.getNotes().keySet()){
+					if(time - drawDelay <= currentTime){
+						for(GameButton btn: currentSong.getNotes().get(time)){
+							if(!btn.isDrawn){
+								Platform.runLater(new Runnable(){
+									@Override
+									public void run(){
+										btn.draw();
+									}
+								});
+							}
+						}
+					}		
+				}
 			}
 		});
 		timer.start();

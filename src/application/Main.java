@@ -37,11 +37,8 @@ public class Main extends Application {
 		
 		Scene scene = MainLogic.instance.getCurrentScreen();
 		
-		final DoubleBinding colorValue = brightness.multiply(2.55);
-
-        StringExpression styleString = Bindings.format("-fx-base:rgb(%1$.0f , %1$.0f, %1$.0f)", colorValue);
-
-        brightness.set(20);
+		
+		
 		primaryStage.setTitle("ProgMusic");
 		primaryStage.setScene(scene);
 		primaryStage.show();

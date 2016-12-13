@@ -16,6 +16,7 @@ import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.shape.StrokeLineJoin;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import logic.MainLogic;
 import logic.PlayerStatus;
 import utility.DrawingUtility;
 import utility.InvalidDirectionException;

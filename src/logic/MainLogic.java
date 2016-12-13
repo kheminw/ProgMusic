@@ -30,7 +30,7 @@ public class MainLogic {
 	private Media media;
 	private MediaPlayer mp;
 	private int i;
-
+	private double volume;
 
 	public MainLogic() {
 		// TODO Auto-generated constructor stub
@@ -40,8 +40,8 @@ public class MainLogic {
 			i = r.nextInt(2);
 			media = RenderableHolder.song[i];
 			mp = new MediaPlayer(media);
-			mp.setCycleCount(MediaPlayer.INDEFINITE);
 			mp.play();
+			mp.setCycleCount(MediaPlayer.INDEFINITE);
 			menu = new MenuScreen();
 			setting = new SettingScreen();
 			select = new SelectSongScreen();
@@ -59,6 +59,7 @@ public class MainLogic {
 		songSet = new ArrayList<Song>();
 		songSet.add(L);
 		songSet.add(ANiMA);
+		volume = setting.getSoundBar().getValue()/100;
 	}
 
 
@@ -68,28 +69,41 @@ public class MainLogic {
 
 	public void switchScreen(String screenName) {
 		this.mp.stop();
+		volume = setting.getSoundBar().getValue()/100;
+
+		this.mp.setVolume(volume);
 		if (screenName.equals("MenuScreen")) {
 			main.setRoot(menu);
 			media = RenderableHolder.song[i];
 			mp = new MediaPlayer(media);
 			this.mp.play();
+			mp.setVolume(volume);
 		} else if (screenName.equals("SettingScreen")) {
 			main.setRoot(setting);
 			media = RenderableHolder.song[i];
 			mp = new MediaPlayer(media);
 			//mp.setCycleCount(MediaPlayer.INDEFINITE);
-
 			this.mp.play();
+			mp.setVolume(volume);
+
+
 		} else if (screenName.equals("SelectSongScreen")) {
 			main.setRoot(select);
 			this.media = RenderableHolder.getInstance().previewSong[0];
 			mp = new MediaPlayer(media);
 			mp.play();
+			mp.setVolume(volume);
+
+
 		} else if (screenName.equals("GameScreen")) {
 			main.setRoot(game);
 			media = RenderableHolder.song[i];
 			mp = new MediaPlayer(media);
 			this.mp.play();
+			mp.setVolume(volume);			
+
+			
+
 		}
 	}
 
@@ -107,5 +121,11 @@ public class MainLogic {
 
 	public void setSong(Media m) {
 		this.mp = new MediaPlayer(m);
+	}
+	public double getVolume(){
+		return volume;
+	}
+	public void setVolume(double voolume){
+		this.volume = volume;
 	}
 }

@@ -355,6 +355,8 @@ public class SelectSongScreen extends Pane {
 				MainLogic.instance.setMedia(RenderableHolder.previewSong[0]);
 				MainLogic.instance.setSong(MainLogic.instance.getMedia());
 				MainLogic.instance.getMp().play();
+				MainLogic.instance.getMp().setVolume(MainLogic.instance.getVolume());
+
 				currentSong = 1;
 			}
 		});
@@ -473,6 +475,8 @@ public class SelectSongScreen extends Pane {
 							MainLogic.instance.setMedia(RenderableHolder.previewSong[1]);
 							MainLogic.instance.setSong(MainLogic.instance.getMedia());
 							MainLogic.instance.getMp().play();
+							MainLogic.instance.getMp().setVolume(MainLogic.instance.getVolume());
+
 						}
 					});
 					seqT.play();

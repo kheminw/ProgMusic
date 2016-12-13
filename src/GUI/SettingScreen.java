@@ -57,7 +57,7 @@ public class SettingScreen extends VBox {
 		
 		//Sound
 		HBox volume = new HBox(50);
-		soundBar = new Slider(0, 100, 100);
+		soundBar = new Slider(0, 100,100);
 		soundBar.setBlockIncrement(10);
 		soundBar.setLayoutX(50);
 		soundBar.setLayoutY(200);
@@ -75,6 +75,7 @@ public class SettingScreen extends VBox {
 			public void changed(ObservableValue observable, Object oldValue, Object newValue) {
 				// TODO Auto-generated method stub
 				soundValue.textProperty().setValue( String.valueOf((int)soundBar.getValue()));
+				MainLogic.instance.setVolume(soundBar.getValue()/100);
 				MainLogic.instance.getMp().setVolume(soundBar.getValue()/100);
 			}
 		});
@@ -169,6 +170,8 @@ public class SettingScreen extends VBox {
 		Background background = new Background(backgroundImage);
 		this.setBackground(background);
 	}
+
+	
 
 	public Slider getSoundBar() {
 		return soundBar;

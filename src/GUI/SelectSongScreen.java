@@ -1,6 +1,5 @@
 package GUI;
 
-import java.awt.Label;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

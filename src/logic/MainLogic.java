@@ -31,7 +31,7 @@ public class MainLogic {
 	private MediaPlayer mp;
 	private int i;
 	private double volume;
-
+	private double opacity;
 	public MainLogic() {
 		// TODO Auto-generated constructor stub
 		
@@ -49,8 +49,6 @@ public class MainLogic {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		game = new GameScreen();
 		main = new Scene(menu, 800, 470);
 		Song L = new Song((long) RenderableHolder.song[0].getDuration().toMillis(), "L", "Ice",
 				RenderableHolder.albumArt[0], RenderableHolder.song[0]);
@@ -60,6 +58,7 @@ public class MainLogic {
 		songSet.add(L);
 		songSet.add(ANiMA);
 		volume = setting.getSoundBar().getValue()/100;
+		opacity = setting.getOpacityBar().getValue()/100;
 	}
 
 
@@ -71,14 +70,30 @@ public class MainLogic {
 		this.mp.stop();
 		volume = setting.getSoundBar().getValue()/100;
 
+		opacity = setting.getOpacityBar().getValue()/100;
 		this.mp.setVolume(volume);
 		if (screenName.equals("MenuScreen")) {
+			try {
+				menu = new MenuScreen();
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			menu.setOpacity(opacity);
 			main.setRoot(menu);
 			media = RenderableHolder.song[i];
 			mp = new MediaPlayer(media);
 			this.mp.play();
 			mp.setVolume(volume);
 		} else if (screenName.equals("SettingScreen")) {
+			try {
+				setting = new SettingScreen();
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println(opacity);
+			setting.setOpacity(opacity);
 			main.setRoot(setting);
 			media = RenderableHolder.song[i];
 			mp = new MediaPlayer(media);
@@ -88,14 +103,23 @@ public class MainLogic {
 
 
 		} else if (screenName.equals("SelectSongScreen")) {
+			try {
+				select = new SelectSongScreen();
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			select.setOpacity(opacity);
 			main.setRoot(select);
-			this.media = RenderableHolder.getInstance().previewSong[0];
+			this.media = RenderableHolder.previewSong[0];
 			mp = new MediaPlayer(media);
 			mp.play();
 			mp.setVolume(volume);
 
 
 		} else if (screenName.equals("GameScreen")) {
+			game = new GameScreen();
+			game.setOpacity(opacity);
 			main.setRoot(game);
 			media = RenderableHolder.song[i];
 			mp = new MediaPlayer(media);
@@ -106,7 +130,12 @@ public class MainLogic {
 
 		}
 	}
-
+	public SettingScreen getSetting(){
+		return setting;
+	}
+	public double getOpacity(){
+		return opacity;
+	}
 	public Media getMedia() {
 		return media;
 	}
@@ -125,7 +154,13 @@ public class MainLogic {
 	public double getVolume(){
 		return volume;
 	}
-	public void setVolume(double voolume){
+	public void setVolume(double volume){
 		this.volume = volume;
+	}
+	public void setOpacity(double opacity){
+		this.opacity = opacity;
+	}
+	public List<Song> getSongSet(){
+		return songSet;
 	}
 }

@@ -129,7 +129,7 @@ public class SettingScreen extends VBox {
 			}
 		});
 		
-		Button restoreDefault = new Button("Restore Results");
+		Button restoreDefault = new Button("Restore Defaults");
 		restoreDefault.setFont(buttonFont);
 		restoreDefault.setOnAction(new EventHandler<ActionEvent>() {
 			

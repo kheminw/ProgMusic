@@ -62,7 +62,7 @@ public class GameManager {
 		gameScreen.setOnKeyPressed(new EventHandler<KeyEvent>(){
 			@Override
 			public void handle(KeyEvent k){
-				System.out.println(currentTime);
+				System.out.println	(currentTime);
 				
 			}
 		});

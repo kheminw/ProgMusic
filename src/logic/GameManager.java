@@ -30,7 +30,7 @@ import utility.DrawingUtility;
  */
 public class GameManager {
 
-	public static final int perfectDelay = 70;
+	public static final int perfectDelay = 80;
 	public static final int goodDelay = 140;
 	public static final int activationDelay = 500;
 	public static final int drawDelay = 2000;

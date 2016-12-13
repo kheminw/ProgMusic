@@ -8,13 +8,35 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.transform.Translate;
 import javafx.util.Duration;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class LeftButtonTransition.
+ */
 public class LeftButtonTransition extends Transition {
+	
+	/** The polygon. */
 	private Polygon polygon;
+	
+	/** The points. */
 	private double[] points;
+	
+	/** The movable point 1 X offset. */
 	double movablePoint1XOffset;
+	
+	/** The movable point 1 Y offset. */
 	double movablePoint1YOffset;
+	
+	/** The movable point 2 X offset. */
 	double movablePoint2XOffset;
+	
+	/** The movable point 2 Y offset. */
 	double movablePoint2YOffset;
+	
+	/**
+	 * Instantiates a new left button transition.
+	 *
+	 * @param shape the shape
+	 */
 	public LeftButtonTransition(Polygon shape) {
 		// TODO Auto-generated constructor stub
 		this.setCycleDuration(Duration.millis(2000));
@@ -26,6 +48,9 @@ public class LeftButtonTransition extends Transition {
 		movablePoint2YOffset = points[7];
 	}
 
+	/* (non-Javadoc)
+	 * @see javafx.animation.Transition#interpolate(double)
+	 */
 	@Override
 	protected void interpolate(double percentage) {
 		// TODO Auto-generated method stub

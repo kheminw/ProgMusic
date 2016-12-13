@@ -5,14 +5,32 @@ import utility.DrawingUtility;
 import utility.InvalidDirectionException;
 import utility.InvalidLengthException;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class HoldButton.
+ */
 public class HoldButton extends GameButton {
+	
+	/** The hold time. */
 	private int holdTime;
+	
+	/**
+	 * Instantiates a new hold button.
+	 *
+	 * @param timeInMillis the time in millis
+	 * @param defaultScore the default score
+	 * @param holdTime the hold time
+	 * @param lane the lane
+	 */
 	public HoldButton(int timeInMillis, int defaultScore, int holdTime, int lane) {
 		super(timeInMillis, defaultScore, lane);
 		// TODO Auto-generated constructor stub
 		this.holdTime = holdTime;
 	}
 
+	/* (non-Javadoc)
+	 * @see logic.GameButton#hit()
+	 */
 	@Override
 	public void hit() {
 		// TODO Auto-generated method stub
@@ -23,18 +41,27 @@ public class HoldButton extends GameButton {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see logic.GameButton#getZ()
+	 */
 	@Override
 	public int getZ() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
+	/* (non-Javadoc)
+	 * @see logic.GameButton#isVisible()
+	 */
 	@Override
 	public boolean isVisible() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see logic.GameButton#draw()
+	 */
 	@Override
 	public void draw() {
 		// TODO Auto-generated method stub

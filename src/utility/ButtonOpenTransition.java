@@ -8,19 +8,52 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.transform.Translate;
 import javafx.util.Duration;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ButtonOpenTransition.
+ */
 public class ButtonOpenTransition extends Transition {
 
+	/** The polygon. */
 	private Polygon polygon;
+	
+	/** The points. */
 	private double[] points;
+	
+	/** The movable point 1 X offset. */
 	private double movablePoint1XOffset;
+	
+	/** The movable point 1 Y offset. */
 	private double movablePoint1YOffset;
+	
+	/** The movable point 2 X offset. */
 	private double movablePoint2XOffset;
+	
+	/** The movable point 2 Y offset. */
 	private double movablePoint2YOffset;
+	
+	/** The trapezoid trans. */
 	private Translate trapezoidTrans;
+	
+	/** The trapezoid trans 2. */
 	private Translate trapezoidTrans2;
+	
+	/** The direction. */
 	private int direction = 1;
+	
+	/** The duration. */
 	private Duration duration;
+	
+	/** The animation ratio. */
 	private float animationRatio; 
+	
+	/**
+	 * Instantiates a new button open transition.
+	 *
+	 * @param shape the shape
+	 * @param direction the direction
+	 * @param duration the duration
+	 */
 	public ButtonOpenTransition(Polygon shape, int direction, Duration duration){
 		// TODO Auto-generated constructor stub
 		this.setCycleDuration(duration);
@@ -35,6 +68,9 @@ public class ButtonOpenTransition extends Transition {
 		this.animationRatio = (float)(this.duration.toMillis())/2000;
 	}
 
+	/* (non-Javadoc)
+	 * @see javafx.animation.Transition#interpolate(double)
+	 */
 	@Override
 	protected void interpolate(double percentage) {
 		double[] pointInterpolate = points.clone();

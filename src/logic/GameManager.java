@@ -3,6 +3,10 @@ package logic;
 import javafx.application.Platform;
 import javafx.scene.media.MediaPlayer;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class GameManager.
+ */
 public class GameManager {
 	
 	public static final int perfectDelay = 50;
@@ -46,12 +50,30 @@ public class GameManager {
 		});
 		timer.start();
 	}
+	
+	/**
+	 * Gets the current time.
+	 *
+	 * @return the current time
+	 */
 	public static long getCurrentTime(){
 		return currentTime;
 	}
+	
+	/**
+	 * Gets the end time.
+	 *
+	 * @return the end time
+	 */
 	public static long getEndTime(){
 		return endTime;
 	}
+	
+	/**
+	 * Sets the end time.
+	 *
+	 * @param end the new end time
+	 */
 	public static void setEndTime(long end){
 		endTime = end;
 	}

@@ -8,20 +8,58 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.transform.Translate;
 import javafx.util.Duration;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ButtonCloseTransition.
+ */
 public class ButtonCloseTransition extends Transition {
+	
+	/** The polygon. */
 	private Polygon polygon;
+	
+	/** The points. */
 	private double[] points;
+	
+	/** The movable point 1 X offset. */
 	double movablePoint1XOffset;
+	
+	/** The movable point 1 Y offset. */
 	double movablePoint1YOffset;
+	
+	/** The movable point 2 X offset. */
 	double movablePoint2XOffset;
+	
+	/** The movable point 2 Y offset. */
 	double movablePoint2YOffset;
+	
+	/** The direction. */
 	private int direction;
+	
+	/** The duration. */
 	private Duration duration;
+	
+	/** The animation ratio. */
 	private float animationRatio;
+	
+	/** The trapezoid trans. */
 	private Translate trapezoidTrans;
+	
+	/** The trapezoid trans 2. */
 	private Translate trapezoidTrans2;
+	
+	/** The trapezoid trans 3. */
 	private Translate trapezoidTrans3;
+	
+	/** The trapezoid trans 4. */
 	private Translate trapezoidTrans4;
+	
+	/**
+	 * Instantiates a new button close transition.
+	 *
+	 * @param shape the shape
+	 * @param direction the direction
+	 * @param duration the duration
+	 */
 	public ButtonCloseTransition(Polygon shape, int direction, Duration duration) {
 		// TODO Auto-generated constructor stub
 //		for(double point: shape.getPoints()){
@@ -39,6 +77,9 @@ public class ButtonCloseTransition extends Transition {
 		this.animationRatio = (float) (this.duration.toMillis()/2000);
 	}
 
+	/* (non-Javadoc)
+	 * @see javafx.animation.Transition#interpolate(double)
+	 */
 	@Override
 	protected void interpolate(double percentage) {
 		// TODO Auto-generated method stub

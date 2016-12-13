@@ -33,15 +33,41 @@ import javafx.scene.text.TextAlignment;
 import logic.MainLogic;
 import javafx.scene.text.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SettingScreen.
+ */
 public class SettingScreen extends VBox {
+	
+	/** The canvas. */
 	private Canvas canvas;
+	
+	/** The gc. */
 	private GraphicsContext gc;
+	
+	/** The title font. */
 	private Font titleFont = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Light.otf")), 30);
+	
+	/** The f. */
 	private Font f = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Light.otf")), 15);
+	
+	/** The button font. */
 	private Font buttonFont = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Light.otf")), 12);
+	
+	/** The sound bar. */
 	private	Slider soundBar;
+	
+	/** The opacity bar. */
 	private	Slider opacityBar;
+	
+	/** The bright. */
 	private double bright;
+	
+	/**
+	 * Instantiates a new setting screen.
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 */
 	public SettingScreen() throws FileNotFoundException{
 		
 		VBox setting = new VBox(60);
@@ -173,10 +199,20 @@ public class SettingScreen extends VBox {
 
 	
 	
+	/**
+	 * Gets the sound bar.
+	 *
+	 * @return the sound bar
+	 */
 	public Slider getSoundBar() {
 		return soundBar;
 	}
 
+	/**
+	 * Gets the opacity bar.
+	 *
+	 * @return the opacity bar
+	 */
 	public Slider getOpacityBar() {
 		return opacityBar;
 	}

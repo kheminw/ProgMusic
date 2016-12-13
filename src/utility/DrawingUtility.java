@@ -23,8 +23,17 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DrawingUtility.
+ */
 public class DrawingUtility   {
 
+	/**
+	 * Draw tap button.
+	 *
+	 * @param r the r
+	 */
 	public static void drawTapButton(int r) {
 		Line note = new Line();
 
@@ -76,6 +85,17 @@ public class DrawingUtility   {
 		parallelTransition.play();
 		
 	}
+	
+	/**
+	 * Draw hold button.
+	 *
+	 * @param r the r
+	 * @param millis the millis
+	 * @param color the color
+	 * @return the list
+	 * @throws InvalidDirectionException the invalid direction exception
+	 * @throws InvalidLengthException the invalid length exception
+	 */
 	public static List<Node> drawHoldButton(int r, long millis, Color color) throws InvalidDirectionException, InvalidLengthException{
 		//millis can only be 2000, 1000 or 500
 		if(millis != 500 && millis != 1000 && millis != 2000) throw new InvalidLengthException();
@@ -235,23 +255,47 @@ public class DrawingUtility   {
 		parallelTransition.play();
 		return objects;
 	}
+	
+	/**
+	 * Adds the points.
+	 *
+	 * @param polygon the polygon
+	 * @param array the array
+	 */
 	public synchronized static void addPoints(Polygon polygon, double[] array){
 		polygon.getPoints().clear();
 		polygon.getPoints().addAll(Arrays.stream(array).boxed().collect(Collectors.toList()));
 	}
 	
+	/**
+	 * Display perfect.
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 */
 	public static void displayPerfect()throws FileNotFoundException{
 		Font f = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Regular.otf")), 24);
 		Text perfect = new Text(360, 150, "Perfect");
 		perfect.setFont(f);
 		perfect.setFill(Color.LIME);
 	}
+	
+	/**
+	 * Display good.
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 */
 	public static void displayGood()throws FileNotFoundException{
 		Font f = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Regular.otf")), 24);
 		Text good = new Text(360, 150, "Good");
 		good.setFont(f);
 		good.setFill(Color.YELLOW);
 	}
+	
+	/**
+	 * Display miss.
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 */
 	public static void displayMiss()throws FileNotFoundException{
 		Font f = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Regular.otf")), 24);
 		Text miss = new Text(360, 150, "Miss");

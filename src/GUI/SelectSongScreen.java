@@ -205,11 +205,19 @@ public class SelectSongScreen extends Pane {
 		next.setLayoutY(400);
 		next.setFitWidth(50);
 		next.setFitHeight(50);
+		FadeTransition ftnext = new FadeTransition(Duration.millis(3000), next);
+		ftnext.setFromValue(0f);
+		ftnext.setToValue(1f);
+		ftnext.play();
 		ImageView back = new ImageView(RenderableHolder.bg[6]);
 		back.setLayoutX(450);
 		back.setLayoutY(400);
 		back.setFitWidth(50);
 		back.setFitHeight(50);
+		FadeTransition ftback = new FadeTransition(Duration.millis(3000), back);
+		ftback.setFromValue(0f);
+		ftback.setToValue(1f);
+		ftback.play();
 		DropShadow dsAlbum = new DropShadow(BlurType.THREE_PASS_BOX	, Color.BLACK, 10, 0, 0, 0);
 		ds.setWidth(21);
 		ds.setHeight(21);
@@ -219,6 +227,10 @@ public class SelectSongScreen extends Pane {
 		albumArt.setFitWidth(200);
 		albumArt.setFitHeight(150);
 		albumArt.setEffect(dsAlbum);
+		FadeTransition ftalbumArt = new FadeTransition(Duration.millis(3000), albumArt);
+		ftalbumArt.setFromValue(0f);
+		ftalbumArt.setToValue(1f);
+		ftalbumArt.play();
 		
 		next.setOnMouseClicked(new EventHandler<Event>() {
 

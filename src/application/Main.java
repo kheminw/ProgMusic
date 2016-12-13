@@ -27,10 +27,18 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Main.
+ */
 public class Main extends Application {
 	
+    /** The brightness. */
     private IntegerProperty brightness = new SimpleIntegerProperty();
 
+	/* (non-Javadoc)
+	 * @see javafx.application.Application#start(javafx.stage.Stage)
+	 */
 	@Override
 	public void start(Stage primaryStage) throws FileNotFoundException {
 		 
@@ -44,6 +52,11 @@ public class Main extends Application {
 		primaryStage.show();
 	}
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}

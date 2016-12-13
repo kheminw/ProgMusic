@@ -8,13 +8,35 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.transform.Translate;
 import javafx.util.Duration;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CenterButtonCloseTransition.
+ */
 public class CenterButtonCloseTransition extends Transition {
+	
+	/** The polygon. */
 	private Polygon polygon;
+	
+	/** The points. */
 	private double[] points;
+	
+	/** The movable point 1 X offset. */
 	double movablePoint1XOffset;
+	
+	/** The movable point 1 Y offset. */
 	double movablePoint1YOffset;
+	
+	/** The movable point 2 X offset. */
 	double movablePoint2XOffset;
+	
+	/** The movable point 2 Y offset. */
 	double movablePoint2YOffset;
+	
+	/**
+	 * Instantiates a new center button close transition.
+	 *
+	 * @param shape the shape
+	 */
 	public CenterButtonCloseTransition(Polygon shape) {
 		// TODO Auto-generated constructor stub
 		for(double point: shape.getPoints()){
@@ -29,6 +51,9 @@ public class CenterButtonCloseTransition extends Transition {
 		movablePoint2YOffset = points[5];
 	}
 
+	/* (non-Javadoc)
+	 * @see javafx.animation.Transition#interpolate(double)
+	 */
 	@Override
 	protected void interpolate(double percentage) {
 		// TODO Auto-generated method stub

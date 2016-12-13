@@ -10,9 +10,14 @@ import GUI.MenuScreen;
 import GUI.RenderableHolder;
 import GUI.SelectSongScreen;
 import GUI.SettingScreen;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.Scene;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
 
 public class MainLogic {
 	public final static MainLogic instance = new MainLogic();
@@ -25,14 +30,17 @@ public class MainLogic {
 	private Media media;
 	private MediaPlayer mp;
 	private int i;
+
+
 	public MainLogic() {
 		// TODO Auto-generated constructor stub
-
+		
 		try {
 			Random r = new Random();
 			i = r.nextInt(2);
 			media = RenderableHolder.song[i];
 			mp = new MediaPlayer(media);
+			mp.setCycleCount(MediaPlayer.INDEFINITE);
 			mp.play();
 			menu = new MenuScreen();
 			setting = new SettingScreen();
@@ -41,6 +49,7 @@ public class MainLogic {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 		game = new GameScreen();
 		main = new Scene(menu, 800, 470);
 		Song L = new Song((long) RenderableHolder.song[0].getDuration().toMillis(), "L", "Ice",
@@ -51,6 +60,7 @@ public class MainLogic {
 		songSet.add(L);
 		songSet.add(ANiMA);
 	}
+
 
 	public Scene getCurrentScreen() {
 		return main;
@@ -67,6 +77,8 @@ public class MainLogic {
 			main.setRoot(setting);
 			media = RenderableHolder.song[i];
 			mp = new MediaPlayer(media);
+			//mp.setCycleCount(MediaPlayer.INDEFINITE);
+
 			this.mp.play();
 		} else if (screenName.equals("SelectSongScreen")) {
 			main.setRoot(select);

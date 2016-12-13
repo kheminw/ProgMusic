@@ -92,6 +92,7 @@ public class SettingScreen extends VBox {
 		brightLabel.setFont(f);
 		brightLabel.setTextFill(Color.WHITE);
 		brightness.getChildren().addAll(brightLabel,brightBar,brightValue);
+		
 		brightBar.valueProperty().addListener(new ChangeListener() {
 			
 			@Override

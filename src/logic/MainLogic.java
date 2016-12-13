@@ -31,7 +31,7 @@ public class MainLogic {
 	private MediaPlayer mp;
 	private int i;
 	private double volume;
-
+	private double opacity;
 	public MainLogic() {
 		// TODO Auto-generated constructor stub
 		
@@ -60,6 +60,8 @@ public class MainLogic {
 		songSet.add(L);
 		songSet.add(ANiMA);
 		volume = setting.getSoundBar().getValue()/100;
+		opacity = setting.getOpacityBar().getValue()/100;
+		
 	}
 
 
@@ -70,15 +72,18 @@ public class MainLogic {
 	public void switchScreen(String screenName) {
 		this.mp.stop();
 		volume = setting.getSoundBar().getValue()/100;
-
+		opacity = setting.getOpacityBar().getValue()/100;
 		this.mp.setVolume(volume);
 		if (screenName.equals("MenuScreen")) {
+			menu.setOpacity(opacity);
 			main.setRoot(menu);
 			media = RenderableHolder.song[i];
 			mp = new MediaPlayer(media);
 			this.mp.play();
 			mp.setVolume(volume);
 		} else if (screenName.equals("SettingScreen")) {
+			System.out.println(opacity);
+			setting.setOpacity(opacity);
 			main.setRoot(setting);
 			media = RenderableHolder.song[i];
 			mp = new MediaPlayer(media);
@@ -88,6 +93,7 @@ public class MainLogic {
 
 
 		} else if (screenName.equals("SelectSongScreen")) {
+			select.setOpacity(opacity);
 			main.setRoot(select);
 			this.media = RenderableHolder.getInstance().previewSong[0];
 			mp = new MediaPlayer(media);
@@ -96,6 +102,7 @@ public class MainLogic {
 
 
 		} else if (screenName.equals("GameScreen")) {
+			game.setOpacity(opacity);
 			main.setRoot(game);
 			media = RenderableHolder.song[i];
 			mp = new MediaPlayer(media);
@@ -105,6 +112,12 @@ public class MainLogic {
 			
 
 		}
+	}
+	public SettingScreen getSetting(){
+		return setting;
+	}
+	public double getOpacity(){
+		return opacity;
 	}
 
 	public Media getMedia() {
@@ -125,7 +138,10 @@ public class MainLogic {
 	public double getVolume(){
 		return volume;
 	}
-	public void setVolume(double voolume){
+	public void setVolume(double volume){
 		this.volume = volume;
+	}
+	public void setOpacity(double opacity){
+		this.opacity = opacity;
 	}
 }

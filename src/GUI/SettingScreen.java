@@ -40,13 +40,10 @@ public class SettingScreen extends VBox {
 	private Font f = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Light.otf")), 15);
 	private Font buttonFont = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Light.otf")), 12);
 	private	Slider soundBar;
-	private	Slider brightBar;
-
+	private	Slider opacityBar;
+	private double bright;
 	public SettingScreen() throws FileNotFoundException{
 		
-	   
-
-	    
 		VBox setting = new VBox(60);
 		setting.setAlignment(Pos.CENTER);
 		setting.setPadding(new Insets(50));
@@ -62,7 +59,7 @@ public class SettingScreen extends VBox {
 		soundBar.setLayoutX(50);
 		soundBar.setLayoutY(200);
 		soundBar.setPrefWidth(500);
-		Label soundLabel = new Label("Sound        ");
+		Label soundLabel = new Label("Sound  ");
 		soundLabel.setTextFill(Color.WHITE);
 		soundLabel.setFont(f);
 		Label soundValue = new Label("100");
@@ -80,26 +77,29 @@ public class SettingScreen extends VBox {
 			}
 		});
 		//bright
-		HBox brightness = new HBox(50);
-		brightBar = new Slider(0, 100, 100);
-		brightBar.setBlockIncrement(10);
-		brightBar.setLayoutX(50);
-		brightBar.setLayoutY(200);
-		brightBar.setPrefWidth(500);
-		Label brightValue = new Label("100");
-		brightValue.setTextFill(Color.WHITE);
-		brightValue.setFont(f);
-		Label brightLabel = new Label("Brightness");
-		brightLabel.setFont(f);
-		brightLabel.setTextFill(Color.WHITE);
-		brightness.getChildren().addAll(brightLabel,brightBar,brightValue);
+		HBox opacity = new HBox(50);
+		opacityBar = new Slider(0, 100, 100);
+		opacityBar.setBlockIncrement(10);
+		opacityBar.setLayoutX(50);
+		opacityBar.setLayoutY(200);
+		opacityBar.setPrefWidth(500);
+		Label opacityValue = new Label("100");
+		opacityValue.setTextFill(Color.WHITE);
+		opacityValue.setFont(f);
+		Label opacityLabel = new Label("Opacity");
+		opacityLabel.setFont(f);
+		opacityLabel.setTextFill(Color.WHITE);
+		opacity.getChildren().addAll(opacityLabel,opacityBar,opacityValue);
 		
-		brightBar.valueProperty().addListener(new ChangeListener() {
+		opacityBar.valueProperty().addListener(new ChangeListener() {
 			
 			@Override
 			public void changed(ObservableValue observable, Object oldValue, Object newValue) {
 				// TODO Auto-generated method stub
-				brightValue.textProperty().setValue( String.valueOf((int)brightBar.getValue()));
+				opacityValue.textProperty().setValue( String.valueOf((int)opacityBar.getValue()));
+				MainLogic.instance.setOpacity(soundBar.getValue()/100);
+				MainLogic.instance.getSetting().setOpacity(opacityBar.getValue()/100);
+				
 			}
 		});
 		
@@ -111,7 +111,7 @@ public class SettingScreen extends VBox {
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				soundBar.setValue(100);
-				brightBar.setValue(100);
+				opacityBar.setValue(100);
 			}
 		});
 		
@@ -157,7 +157,7 @@ public class SettingScreen extends VBox {
 		
 		restore.setAlignment(Pos.CENTER);
 		restore.getChildren().addAll(tb,restoreDefault,clearHighScore);
-		setting.getChildren().addAll(title,volume,brightness,restore,back);
+		setting.getChildren().addAll(title,volume,opacity,restore,back);
 
 		this.getChildren().add(setting);
 		
@@ -172,12 +172,12 @@ public class SettingScreen extends VBox {
 	}
 
 	
-
+	
 	public Slider getSoundBar() {
 		return soundBar;
 	}
 
-	public Slider getBrightBar() {
-		return brightBar;
+	public Slider getOpacityBar() {
+		return opacityBar;
 	}
 }

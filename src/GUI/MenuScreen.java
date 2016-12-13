@@ -62,6 +62,7 @@ public class MenuScreen extends Pane{
 	
 	public MenuScreen() throws FileNotFoundException {
 		
+
 		Image image = RenderableHolder.bg[0];
 		// new BackgroundSize(width, height, widthAsPercentage, heightAsPercentage, contain, cover)
 		BackgroundSize backgroundSize = new BackgroundSize(800, 470, true, true, true, true);

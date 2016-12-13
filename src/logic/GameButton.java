@@ -33,9 +33,9 @@ public abstract class GameButton implements Tappable, IRenderable {
 	 * @param defaultScore the default score
 	 * @param lane the lane
 	 */
-	public GameButton(int timeInMillis, int defaultScore, int lane) {
+	public GameButton(int timeInMillis, int lane) {
 		this.spawnTime = timeInMillis;
-		this.score = defaultScore;
+		this.score = 100;
 		this.hit = false;
 		this.destroyed = false;
 		this.lane = lane;
@@ -111,5 +111,8 @@ public abstract class GameButton implements Tappable, IRenderable {
 		// TODO Auto-generated method stub
 		return Math.abs(this.buttonDownTime - Timeline.instance.getTime())<=GameManager.activationDelay;
 	}
-
+	@Override
+	public String toString(){
+		return "GameButton: "+"Lane: " +lane+" Time: "+spawnTime;
+	}
 }

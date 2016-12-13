@@ -13,8 +13,8 @@ public class SlideButton extends GameButton {
 	 * @param defaultScore the default score
 	 * @param lane the lane
 	 */
-	public SlideButton(int timeInMillis, int defaultScore, int lane) {
-		super(timeInMillis, defaultScore, lane);
+	public SlideButton(int timeInMillis, int lane) {
+		super(timeInMillis, lane);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -55,6 +55,10 @@ public class SlideButton extends GameButton {
 	public void draw() {
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public String toString(){
+		return "SlideButton: "+"Lane: " +lane+" Time: "+spawnTime;
 	}
 
 }

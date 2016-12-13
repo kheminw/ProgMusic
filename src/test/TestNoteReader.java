@@ -1,5 +1,13 @@
 package test;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import logic.GameButton;
+import logic.HoldButton;
+import logic.TapButton;
 import utility.NoteReader;
 import utility.Utility;
 
@@ -8,10 +16,9 @@ public class TestNoteReader {
 	public TestNoteReader() {
 		// TODO Auto-generated constructor stub
 	}
-	public static void main(String[] args){
-		utility.NoteReader.readNote("ANiMA");
-		for(String[] result: NoteReader.noteCollection){
-			System.out.println("Result: " + result[0] + " " + result[1]);
-		}
+
+	public static void main(String[] args) {
+		Map<Long, List<GameButton>> notes = new HashMap<Long, List<GameButton>>();
+		NoteReader.parseNote("ANiMA", notes);
 	}
 }

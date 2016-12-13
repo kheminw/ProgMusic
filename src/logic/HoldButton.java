@@ -22,8 +22,8 @@ public class HoldButton extends GameButton {
 	 * @param holdTime the hold time
 	 * @param lane the lane
 	 */
-	public HoldButton(int timeInMillis, int defaultScore, int holdTime, int lane) {
-		super(timeInMillis, defaultScore, lane);
+	public HoldButton(int timeInMillis, int lane, int holdTime) {
+		super(timeInMillis, lane);
 		// TODO Auto-generated constructor stub
 		this.holdTime = holdTime;
 	}
@@ -71,6 +71,10 @@ public class HoldButton extends GameButton {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	@Override
+	public String toString(){
+		return "HoldButton: "+"Lane: " +lane+" Time: "+spawnTime+" HoldTime: "+holdTime;
 	}
 
 }

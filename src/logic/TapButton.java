@@ -15,8 +15,8 @@ public class TapButton extends GameButton {
 	 * @param defaultScore the default score
 	 * @param lane the lane
 	 */
-	public TapButton(int timeInMillis, int defaultScore, int lane) {
-		super(timeInMillis, defaultScore, lane);
+	public TapButton(int timeInMillis, int lane) {
+		super(timeInMillis, lane);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -57,6 +57,10 @@ public class TapButton extends GameButton {
 	public void draw() {
 		// TODO Auto-generated method stub
 		DrawingUtility.drawTapButton(this.lane);
+	}
+	@Override
+	public String toString(){
+		return "TapButton: "+"Lane: " +lane+" Time: "+spawnTime;
 	}
 
 }

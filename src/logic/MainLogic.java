@@ -37,21 +37,18 @@ public class MainLogic {
 	private Song L;
 	private Song ANiMA;
 	public MainLogic() {
-		// TODO Auto-generated constructor stub
-		try {
-			Random r = new Random();
-			i = r.nextInt(2);
-			media = RenderableHolder.song[i];
-			mp = new MediaPlayer(media);
-			mp.play();
-			mp.setCycleCount(MediaPlayer.INDEFINITE);
-			menu = new MenuScreen();
-			setting = new SettingScreen();
-			select = new SelectSongScreen();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		Random r = new Random();
+		i = r.nextInt(2);
+		media = RenderableHolder.song[i];
+		mp = new MediaPlayer(media);
+		mp.play();
+		mp.setCycleCount(MediaPlayer.INDEFINITE);
+			try {
+				menu = new MenuScreen();
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		main = new Scene(menu, 800, 470);
 		MediaPlayer song0LengthFinder = new MediaPlayer(RenderableHolder.song[0]);
 		song0LengthFinder.setOnReady(new Runnable(){
@@ -77,7 +74,13 @@ public class MainLogic {
 				songSet.add(ANiMA);
 			}
 		});
-
+		try {
+			setting = new SettingScreen();
+			select = new SelectSongScreen();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		volume = setting.getSoundBar().getValue()/100;
 		opacity = setting.getOpacityBar().getValue()/100;
 	}
@@ -148,6 +151,7 @@ public class MainLogic {
 			this.mp.play();
 			mp.setVolume(volume);			
 			GameManager.drawService.start();
+			GameManager.hitService.start();
 			GameManager.timer.start();
 
 		}

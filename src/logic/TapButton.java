@@ -1,5 +1,6 @@
 package logic;
 
+import javafx.scene.Node;
 import javafx.scene.shape.Line;
 import utility.DrawingUtility;
 
@@ -9,6 +10,7 @@ import utility.DrawingUtility;
  */
 public class TapButton extends GameButton {
 
+	public Node note;
 	/**
 	 * Instantiates a new tap button.
 	 *
@@ -57,10 +59,14 @@ public class TapButton extends GameButton {
 	@Override
 	public void draw() {
 		// TODO Auto-generated method stub
-		System.out.println("being drawn lane: "+this.lane);
+//		System.out.println("being drawn lane: "+this.lane);
 		Line note = DrawingUtility.drawTapButton(this.lane);
+		this.note = note;
 		MainLogic.instance.getGameScreen().addNote(note);
 		this.isDrawn = true;
+	}
+	public void remove(){
+		MainLogic.instance.getGameScreen().removeNote(note);
 	}
 	@Override
 	public String toString(){

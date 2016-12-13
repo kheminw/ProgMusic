@@ -31,6 +31,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import logic.MainLogic;
+import logic.PlayerStatus;
 import javafx.scene.text.*;
 
 // TODO: Auto-generated Javadoc
@@ -129,7 +130,7 @@ public class SettingScreen extends VBox {
 			}
 		});
 		
-		Button restoreDefault = new Button("Restore Deults");
+		Button restoreDefault = new Button("Restore Defaults");
 		restoreDefault.setFont(buttonFont);
 		restoreDefault.setOnAction(new EventHandler<ActionEvent>() {
 			
@@ -163,16 +164,19 @@ public class SettingScreen extends VBox {
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				if(tb.getText().equals("Difficulty : Easy")){
+					PlayerStatus.setMode(2);
 					tb.setText("Difficulty : Normal");
 					tb.setSelected(false);
 
 				}
 				else if(tb.getText().equals("Difficulty : Normal")){
+					PlayerStatus.setMode(3);
 					tb.setText("Difficulty : Hard");
 					tb.setSelected(false);
 
 				}
 				else if(tb.getText().equals("Difficulty : Hard")){
+					PlayerStatus.setMode(1);
 					tb.setText("Difficulty : Easy");
 					tb.setSelected(false);
 

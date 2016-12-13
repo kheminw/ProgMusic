@@ -45,6 +45,12 @@ public class SelectSongScreen extends Pane {
 	private String percent;
 	public SelectSongScreen() throws FileNotFoundException {
 		currentSong = 1;
+		try{
+			highScore = Integer.toString(utility.Utility.readScore("L"));
+		}
+		catch(NullPointerException e){
+			highScore = "0000000";
+		}
 		Image image = RenderableHolder.bg[4];
 		// new BackgroundSize(width, height, widthAsPercentage,
 		// heightAsPercentage, contain, cover)
@@ -133,52 +139,52 @@ public class SelectSongScreen extends Pane {
 		ftscorePercent.setToValue(1f);
 		ftscorePercent.play();
 
-		Text perfect = new Text(70, 390, "Perfect");
-		perfect.setFont(f);
-		perfect.setFill(Color.LIME);
-		FadeTransition ftperfect = new FadeTransition(Duration.millis(3000), perfect);
-		ftperfect.setFromValue(0f);
-		ftperfect.setToValue(1f);
-		ftperfect.play();
-
-		Text perfectNote = new Text(80, 430, "000");
-		perfectNote.setFont(f);
-		perfectNote.setFill(Color.LIME);
-		FadeTransition ftperfectNote = new FadeTransition(Duration.millis(3000), perfectNote);
-		ftperfectNote.setFromValue(0f);
-		ftperfectNote.setToValue(1f);
-		ftperfectNote.play();
-
-		Text good = new Text(180, 390, "Good");
-		good.setFont(f);
-		good.setFill(Color.YELLOW);
-		FadeTransition ftgood = new FadeTransition(Duration.millis(3000), good);
-		ftgood.setFromValue(0f);
-		ftgood.setToValue(1f);
-		ftgood.play();
-		Text goodNote = new Text(185, 430, "000");
-		goodNote.setFont(f);
-		goodNote.setFill(Color.YELLOW);
-		FadeTransition ftgoodNote = new FadeTransition(Duration.millis(3000), goodNote);
-		ftgoodNote.setFromValue(0f);
-		ftgoodNote.setToValue(1f);
-		ftgoodNote.play();
-
-		Text miss = new Text(270, 390, "Miss");
-		miss.setFont(f);
-		miss.setFill(Color.RED);
-		FadeTransition ftmiss = new FadeTransition(Duration.millis(3000), miss);
-		ftmiss.setFromValue(0f);
-		ftmiss.setToValue(1f);
-		ftmiss.play();
-
-		Text missNote = new Text(272, 430, "000");
-		missNote.setFont(f);
-		missNote.setFill(Color.RED);
-		FadeTransition ftmissNote = new FadeTransition(Duration.millis(3000), missNote);
-		ftmissNote.setFromValue(0f);
-		ftmissNote.setToValue(1f);
-		ftmissNote.play();
+//		Text perfect = new Text(70, 390, "Perfect");
+//		perfect.setFont(f);
+//		perfect.setFill(Color.LIME);
+//		FadeTransition ftperfect = new FadeTransition(Duration.millis(3000), perfect);
+//		ftperfect.setFromValue(0f);
+//		ftperfect.setToValue(1f);
+//		ftperfect.play();
+//
+//		Text perfectNote = new Text(80, 430, "000");
+//		perfectNote.setFont(f);
+//		perfectNote.setFill(Color.LIME);
+//		FadeTransition ftperfectNote = new FadeTransition(Duration.millis(3000), perfectNote);
+//		ftperfectNote.setFromValue(0f);
+//		ftperfectNote.setToValue(1f);
+//		ftperfectNote.play();
+//
+//		Text good = new Text(180, 390, "Good");
+//		good.setFont(f);
+//		good.setFill(Color.YELLOW);
+//		FadeTransition ftgood = new FadeTransition(Duration.millis(3000), good);
+//		ftgood.setFromValue(0f);
+//		ftgood.setToValue(1f);
+//		ftgood.play();
+//		Text goodNote = new Text(185, 430, "000");
+//		goodNote.setFont(f);
+//		goodNote.setFill(Color.YELLOW);
+//		FadeTransition ftgoodNote = new FadeTransition(Duration.millis(3000), goodNote);
+//		ftgoodNote.setFromValue(0f);
+//		ftgoodNote.setToValue(1f);
+//		ftgoodNote.play();
+//
+//		Text miss = new Text(270, 390, "Miss");
+//		miss.setFont(f);
+//		miss.setFill(Color.RED);
+//		FadeTransition ftmiss = new FadeTransition(Duration.millis(3000), miss);
+//		ftmiss.setFromValue(0f);
+//		ftmiss.setToValue(1f);
+//		ftmiss.play();
+//
+//		Text missNote = new Text(272, 430, "000");
+//		missNote.setFont(f);
+//		missNote.setFill(Color.RED);
+//		FadeTransition ftmissNote = new FadeTransition(Duration.millis(3000), missNote);
+//		ftmissNote.setFromValue(0f);
+//		ftmissNote.setToValue(1f);
+//		ftmissNote.play();
 
 		Text bpm = new Text(500, 230, "BPM : 155");
 		bpm.setFont(r);
@@ -196,7 +202,7 @@ public class SelectSongScreen extends Pane {
 		ftscore.setToValue(1f);
 		ftscore.play();
 
-		Text totalNote = new Text(600, 350, "Total Note : 2000");
+		Text totalNote = new Text(600, 350, "Total Note : 222");
 		totalNote.setFont(r);
 		totalNote.setFill(Color.WHITE);
 		FadeTransition ftnote = new FadeTransition(Duration.millis(3000), totalNote);
@@ -285,6 +291,13 @@ public class SelectSongScreen extends Pane {
 				secondSong.setEffect(null);
 				
 				if(currentSong == 2){
+					try{
+						highScore = Integer.toString(utility.Utility.readScore("L"));;
+					}
+					catch(NullPointerException e){
+						highScore = "0000000";
+					}
+					score.setText(highScore);
 					ParallelTransition out = new ParallelTransition();
 					
 					FadeTransition ftAlbum = new FadeTransition(Duration.millis(1500), albumArt);
@@ -360,7 +373,7 @@ public class SelectSongScreen extends Pane {
 							// TODO Auto-generated method stub
 							bpm.setText("BPM : 155");
 							artist.setText("Artist : Ice");
-							totalNote.setText("Total Note: 2000");
+							totalNote.setText("Total Note: 222");
 							albumArt.setImage(RenderableHolder.albumArt[0]);
 						}
 					});
@@ -408,6 +421,13 @@ public class SelectSongScreen extends Pane {
 				secondSong.setEffect(ds);
 				firstSong.setEffect(null);
 				if(currentSong == 1){
+					try{
+						highScore = Integer.toString(utility.Utility.readScore("ANiMA"));
+					}
+					catch(NullPointerException e){
+						highScore = "0000000";
+					}
+					score.setText(highScore);
 					ParallelTransition out = new ParallelTransition();
 					
 					FadeTransition ftAlbumOut = new FadeTransition(Duration.millis(1500), albumArt);
@@ -485,7 +505,7 @@ public class SelectSongScreen extends Pane {
 							// TODO Auto-generated method stub
 							bpm.setText("BPM : 200");
 							artist.setText("Artist : Xi");
-							totalNote.setText("Total Note: 2000");
+							totalNote.setText("Total Note: 257");
 							albumArt.setImage(RenderableHolder.albumArt[1]);
 							MainLogic.instance.getMp().stop();
 							MainLogic.instance.setMedia(RenderableHolder.previewSong[1]);
@@ -504,7 +524,7 @@ public class SelectSongScreen extends Pane {
 		});
 
 		this.getChildren().addAll(canvas, open, splitW, split, firstSong, secondSong, scorePercent, score, scoreLabel,
-				perfect, good, miss, perfectNote, goodNote, missNote, bpm, artist, totalNote,albumArt,next,back);
+				 bpm, artist, totalNote,albumArt,next,back);
 
 	}
 	public static int getCurrentSong(){

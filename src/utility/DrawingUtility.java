@@ -274,11 +274,12 @@ public class DrawingUtility   {
 	 *
 	 * @throws FileNotFoundException the file not found exception
 	 */
-	public static void displayPerfect()throws FileNotFoundException{
+	public static Text displayPerfect()throws FileNotFoundException{
 		Font f = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Regular.otf")), 24);
 		Text perfect = new Text(360, 150, "Perfect");
 		perfect.setFont(f);
 		perfect.setFill(Color.LIME);
+		return(perfect);
 	}
 	
 	/**
@@ -286,11 +287,12 @@ public class DrawingUtility   {
 	 *
 	 * @throws FileNotFoundException the file not found exception
 	 */
-	public static void displayGood()throws FileNotFoundException{
+	public static Text displayGood()throws FileNotFoundException{
 		Font f = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Regular.otf")), 24);
 		Text good = new Text(360, 150, "Good");
 		good.setFont(f);
 		good.setFill(Color.YELLOW);
+		return(good);
 	}
 	
 	/**
@@ -298,10 +300,11 @@ public class DrawingUtility   {
 	 *
 	 * @throws FileNotFoundException the file not found exception
 	 */
-	public static void displayMiss()throws FileNotFoundException{
+	public static Text displayMiss()throws FileNotFoundException{
 		Font f = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Regular.otf")), 24);
 		Text miss = new Text(360, 150, "Miss");
 		miss.setFont(f);
 		miss.setFill(Color.RED);
+		return(miss);
 	}
 }

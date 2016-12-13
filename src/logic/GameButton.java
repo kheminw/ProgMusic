@@ -1,6 +1,10 @@
 package logic;
 
+import java.io.FileNotFoundException;
+
 import GUI.IRenderable;
+import javafx.scene.text.Text;
+import utility.DrawingUtility;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -64,36 +68,43 @@ public abstract class GameButton implements Tappable, IRenderable {
 	 * @see GUI.IRenderable#draw()
 	 */
 	abstract public void draw();
-	
+	abstract public void remove();
 	/**
 	 * Check grade.
 	 *
 	 * @return true, if successful
 	 */
 	public boolean checkGrade() {
-		if(Math.abs(this.buttonDownTime - Timeline.instance.getTime()) <= GameManager.perfectDelay*PlayerStatus.getMode()){
-			//TODO gui.displayPerfect();
-			PlayerStatus.setScore(score);
-			PlayerStatus.setHp(5);
+		if(Math.abs(this.buttonDownTime - this.spawnTime - 2000) <= GameManager.perfectDelay){
+			MainLogic.instance.getGameScreen().removeNote(GameManager.good);
+			MainLogic.instance.getGameScreen().removeNote(GameManager.miss);
+			MainLogic.instance.getGameScreen().addNote(GameManager.perfect);
+			PlayerStatus.setScore(score*5);
+			PlayerStatus.setHp(8);
 			PlayerStatus.setFever(8);
 			PlayerStatus.incrementCombo();
 			this.hit = true;
 			return true;
 		}
-		else if(Math.abs(this.buttonDownTime - Timeline.instance.getTime()) <= GameManager.goodDelay*PlayerStatus.getMode()){
-			//TODO gui.displayGood();
-			PlayerStatus.setScore(score);
-			PlayerStatus.setHp(3);
+		else if(Math.abs(this.buttonDownTime - this.spawnTime - 2000) <= GameManager.goodDelay){
+			MainLogic.instance.getGameScreen().removeNote(GameManager.perfect);
+			MainLogic.instance.getGameScreen().removeNote(GameManager.miss);
+			MainLogic.instance.getGameScreen().addNote(GameManager.good);
+			PlayerStatus.setScore(score*2);
+			PlayerStatus.setHp(5);
 			PlayerStatus.setFever(5);
 			PlayerStatus.incrementCombo();
 			this.hit = true;
 			return true;
 		}
 		else{
-			//TODO gui.displayMiss();
-			PlayerStatus.setHp(-15);
+			MainLogic.instance.getGameScreen().removeNote(GameManager.perfect);
+			MainLogic.instance.getGameScreen().removeNote(GameManager.good);
+			MainLogic.instance.getGameScreen().addNote(GameManager.miss);
+			PlayerStatus.setHp(-5);
 			PlayerStatus.setFever(-1000);
 			PlayerStatus.resetCombo();
+			this.hit = true;
 			return false;
 		}
 	}
@@ -112,7 +123,9 @@ public abstract class GameButton implements Tappable, IRenderable {
 	@Override
 	public boolean isActivated() {
 		// TODO Auto-generated method stub
-		return Math.abs(this.buttonDownTime - Timeline.instance.getTime())<=GameManager.activationDelay;
+		//return Math.abs(this.spawnTime-GameManager.getCurrentTime())<=GameManager.activationDelay;
+		return true;
+		
 	}
 	@Override
 	public String toString(){
@@ -120,5 +133,14 @@ public abstract class GameButton implements Tappable, IRenderable {
 	}
 	public boolean isDrawn(){
 		return isDrawn;
+	}
+	public long getButtonDownTime(){
+		return buttonDownTime;
+	}
+	public void setButtonDownTime(long time){
+		buttonDownTime =time;
+	}
+	public boolean isHit(){
+		return this.hit;
 	}
 }

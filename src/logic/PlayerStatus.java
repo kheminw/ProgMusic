@@ -45,7 +45,7 @@ public class PlayerStatus {
 	 *
 	 * @return the score
 	 */
-	public static int getScore() {
+	public synchronized static int getScore() {
 		return score;
 	}
 	
@@ -54,7 +54,7 @@ public class PlayerStatus {
 	 *
 	 * @param score the new score
 	 */
-	public static void setScore(int score) {
+	public synchronized static void setScore(int score) {
 		PlayerStatus.score += score;
 		if(PlayerStatus.score >= 1000000) PlayerStatus.score = 1000000;
 	}
@@ -64,7 +64,7 @@ public class PlayerStatus {
 	 *
 	 * @return the hp
 	 */
-	public static int getHp() {
+	public synchronized static int getHp() {
 		return hp;
 	}
 	
@@ -73,7 +73,7 @@ public class PlayerStatus {
 	 *
 	 * @param hp the new hp
 	 */
-	public static void setHp(int hp) {
+	public synchronized static void setHp(int hp) {
 		PlayerStatus.hp += hp;
 		if(PlayerStatus.hp > 100) PlayerStatus.hp = 100;
 		else if(PlayerStatus.hp <= 0){
@@ -129,8 +129,11 @@ public class PlayerStatus {
 	 *
 	 * @return true, if is game over
 	 */
-	public static boolean isGameOver(){
+	public synchronized static boolean isGameOver(){
 		return isGameOver;
+	}
+	public synchronized static void setGameOver(boolean value){
+		isGameOver = value;
 	}
 	
 	/**
@@ -217,7 +220,7 @@ public class PlayerStatus {
 	public static void initialize(){
 		score = 0;
 		fever = 0;
-		hp = 0;
+		hp = 100;
 		isGameOver = false;
 		isInFever = false;
 		resetCombo();

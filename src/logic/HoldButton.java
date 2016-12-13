@@ -16,6 +16,7 @@ public class HoldButton extends GameButton {
 	
 	/** The hold time. */
 	private int holdTime;
+	private List<Node> objects;
 	
 	/**
 	 * Instantiates a new hold button.
@@ -37,13 +38,8 @@ public class HoldButton extends GameButton {
 	@Override
 	public void hit() {
 		// TODO Auto-generated method stub
-		if(isActivated()&&!isDestroyed()){
-			this.holdTime--;
-			if(!checkGrade()) this.destroyed = true;
-			if(holdTime==0) this.destroyed = true;
-		}
+		checkGrade();
 	}
-
 	/* (non-Javadoc)
 	 * @see logic.GameButton#getZ()
 	 */
@@ -70,12 +66,18 @@ public class HoldButton extends GameButton {
 		// TODO Auto-generated method stub
 		try {
 			List<Node> objects = DrawingUtility.drawHoldButton(lane, holdTime, Color.AQUA);
+			this.objects = objects;
 			MainLogic.instance.getGameScreen().addLongNote(objects);
 		} catch (InvalidDirectionException | InvalidLengthException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		this.isDrawn = true;
+	}
+	public void remove(){
+		for(Node object: objects){
+			MainLogic.instance.getGameScreen().removeNote(object);
+		}
 	}
 	@Override
 	public String toString(){

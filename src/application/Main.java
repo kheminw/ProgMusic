@@ -58,6 +58,7 @@ public class Main extends Application {
 		if(MainLogic.instance.getGameScreen() != null){
 			GameManager.timer.interrupt();
 			GameManager.exec.shutdownNow();
+			GameManager.exec2.shutdownNow();
 		}
 		Platform.exit();
 		System.exit(0);

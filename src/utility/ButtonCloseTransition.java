@@ -24,9 +24,9 @@ public class ButtonCloseTransition extends Transition {
 	private Translate trapezoidTrans4;
 	public ButtonCloseTransition(Polygon shape, int direction, Duration duration) {
 		// TODO Auto-generated constructor stub
-		for(double point: shape.getPoints()){
-			System.out.println(point);
-		}
+//		for(double point: shape.getPoints()){
+//			System.out.println(point);
+//		}
 		this.setCycleDuration(Duration.millis(2000));
 		this.polygon = shape;
 		this.points = polygon.getPoints().stream().mapToDouble(d -> d).toArray();
@@ -98,12 +98,12 @@ public class ButtonCloseTransition extends Transition {
 		}
 		//trapezoidScale.transform2DPoints(pointInterpolate, 2, currentPoints, 2, 2);
 		
-		System.out.println("");
-		System.out.print("Percentage: " + percentage + " Closing: "); 
-		for(double point : polygon.getPoints().stream().mapToDouble(d -> d).toArray()){
-			System.out.print(point+" ");
-		}
-		System.out.println("");
+//		System.out.println("");
+//		System.out.print("Percentage: " + percentage + " Closing: "); 
+//		for(double point : polygon.getPoints().stream().mapToDouble(d -> d).toArray()){
+//			System.out.print(point+" ");
+//		}
+//		System.out.println("");
 //		System.out.println(polygon.getPoints());
 	}
 

@@ -26,15 +26,16 @@ public class MainLogic {
 	private SettingScreen setting;
 	private SelectSongScreen select;
 	private Scene main;
-	private List<Song> songSet;
+	private List<Song> songSet = new ArrayList<Song>();
 	private Media media;
 	private MediaPlayer mp;
 	private int i;
 	private double volume;
 	private double opacity;
+	private Song L;
+	private Song ANiMA;
 	public MainLogic() {
 		// TODO Auto-generated constructor stub
-		
 		try {
 			Random r = new Random();
 			i = r.nextInt(2);
@@ -50,13 +51,25 @@ public class MainLogic {
 			e.printStackTrace();
 		}
 		main = new Scene(menu, 800, 470);
-		Song L = new Song((long) RenderableHolder.song[0].getDuration().toMillis(), "L", "Ice",
-				RenderableHolder.albumArt[0], RenderableHolder.song[0]);
-		Song ANiMA = new Song((long) RenderableHolder.song[1].getDuration().toMillis(), "ANiMA", "xi",
-				RenderableHolder.albumArt[1], RenderableHolder.song[1]);
-		songSet = new ArrayList<Song>();
-		songSet.add(L);
-		songSet.add(ANiMA);
+		MediaPlayer song0LengthFinder = new MediaPlayer(RenderableHolder.song[0]);
+		song0LengthFinder.setOnReady(new Runnable(){
+			@Override
+			public void run(){
+				L = new Song((long) RenderableHolder.song[0].getDuration().toMillis(), "L", "Ice",
+						RenderableHolder.albumArt[0], RenderableHolder.song[0]);
+				songSet.add(L);
+			}
+		});
+		MediaPlayer song1LengthFinder = new MediaPlayer(RenderableHolder.song[1]);
+		song1LengthFinder.setOnReady(new Runnable(){
+			@Override
+			public void run(){
+				ANiMA = new Song((long) RenderableHolder.song[1].getDuration().toMillis(), "ANiMA", "xi",
+						RenderableHolder.albumArt[1], RenderableHolder.song[1]);
+				songSet.add(ANiMA);
+			}
+		});
+
 		volume = setting.getSoundBar().getValue()/100;
 		opacity = setting.getOpacityBar().getValue()/100;
 	}
@@ -118,10 +131,11 @@ public class MainLogic {
 
 
 		} else if (screenName.equals("GameScreen")) {
+			this.mp.stop();
 			game = new GameScreen();
 			game.setOpacity(opacity);
 			main.setRoot(game);
-			media = RenderableHolder.song[i];
+			media = RenderableHolder.song[SelectSongScreen.getCurrentSong()];
 			mp = new MediaPlayer(media);
 			this.mp.play();
 			mp.setVolume(volume);			

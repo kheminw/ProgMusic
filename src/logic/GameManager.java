@@ -1,5 +1,8 @@
 package logic;
 
+import javafx.application.Platform;
+import javafx.scene.media.MediaPlayer;
+
 public class GameManager {
 	
 	public static final int perfectDelay = 50;
@@ -11,10 +14,37 @@ public class GameManager {
 	private static long currentTime;
 	private static long endTime;
 	private static Song currentSong;
-	public GameManager() {
+	private Thread timer;
+	public GameManager(Song song) {
 		// TODO Auto-generated constructor stub
+		currentSong = song;
 		currentTime = 0;
 		endTime = currentSong.getTotalTime();
+		MainLogic.instance.getMp().setOnEndOfMedia(new Runnable(){
+			@Override
+			public void run(){
+				MainLogic.instance.getMp().stop();
+			}
+		});
+		this.timer = new Thread(new Runnable(){
+			@Override
+			public void run(){
+				System.out.println(endTime);
+				while(currentTime < endTime){
+					currentTime = (long) MainLogic.instance.getMp().currentTimeProperty().get().toMillis();
+					//System.out.println("Time: " + currentTime + " Ends at: " + endTime);
+					if(currentTime>endTime-1000) break;
+				}
+				MainLogic.instance.getMp().stop();
+				Platform.runLater(new Runnable(){
+					@Override
+					public void run(){
+						MainLogic.instance.switchScreen("MenuScreen");
+					}
+				});
+			}
+		});
+		timer.start();
 	}
 	public static long getCurrentTime(){
 		return currentTime;

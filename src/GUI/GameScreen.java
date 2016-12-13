@@ -16,6 +16,7 @@ import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.shape.StrokeLineJoin;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import logic.GameManager;
 import logic.MainLogic;
 import logic.PlayerStatus;
 import utility.DrawingUtility;
@@ -61,6 +62,7 @@ public class GameScreen extends Pane {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		GameManager gm = new GameManager(MainLogic.instance.getSongSet().get(SelectSongScreen.getCurrentSong()));
 		this.getChildren().add(canvas);
 		this.getChildren().add(tapLine);
 		this.getChildren().addAll(objects);

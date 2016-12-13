@@ -40,10 +40,10 @@ public class SelectSongScreen extends Pane {
 	private Font song = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Regular.otf")), 40);
 	private Font f = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Regular.otf")), 16);
 	private Font r = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Regular.otf")), 20);
-	private int currentSong = 1;
+	private static int currentSong = 1;
 
 	public SelectSongScreen() throws FileNotFoundException {
-		
+		currentSong = 1;
 		Image image = RenderableHolder.bg[4];
 		// new BackgroundSize(width, height, widthAsPercentage,
 		// heightAsPercentage, contain, cover)
@@ -491,5 +491,7 @@ public class SelectSongScreen extends Pane {
 				perfect, good, miss, perfectNote, goodNote, missNote, bpm, artist, totalNote,albumArt,next,back);
 
 	}
-
+	public static int getCurrentSong(){
+		return currentSong-1;
+	}
 }

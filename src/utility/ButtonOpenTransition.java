@@ -62,12 +62,12 @@ public class ButtonOpenTransition extends Transition {
 		currentPoints[4] += movablePoint2XOffset;
 		currentPoints[5] += movablePoint2YOffset;
 		
-		System.out.println();
-		System.out.print("Opening: ");
-		for(double point : currentPoints){
-			System.out.print(point+" ");
-		}
-		System.out.println();
+//		System.out.println();
+//		System.out.print("Opening: ");
+//		for(double point : currentPoints){
+//			System.out.print(point+" ");
+//		}
+//		System.out.println();
 		DrawingUtility.addPoints(polygon, currentPoints);
 	}
 

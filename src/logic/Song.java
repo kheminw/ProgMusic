@@ -1,15 +1,16 @@
 package logic;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javafx.scene.image.Image;
-import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 public class Song {
 	
-	private ArrayList<GameButton> notes = new ArrayList<GameButton>();
+	private Map<Long, List<GameButton>> notes = new HashMap<Long, List<GameButton>>();
 	private long totalTime;
 	private String title;
 	private String artist;
@@ -78,11 +79,11 @@ public class Song {
 		this.song = song;
 	}
 	
-	public void addNotes(GameButton note){
-		this.notes.add(note);
+	public void addNotes(long time, List<GameButton> notes){
+		this.notes.put(time, notes);
 	}
 	
-	public void setNotes(ArrayList<GameButton> notes){
+	public void setNotes(Map<Long, List<GameButton>> notes){
 		this.notes = notes;
 	}
 	

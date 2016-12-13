@@ -43,6 +43,7 @@ public class SelectSongScreen extends Pane {
 	private int currentSong = 1;
 
 	public SelectSongScreen() throws FileNotFoundException {
+		
 		Image image = RenderableHolder.bg[4];
 		// new BackgroundSize(width, height, widthAsPercentage,
 		// heightAsPercentage, contain, cover)
@@ -350,6 +351,10 @@ public class SelectSongScreen extends Pane {
 					seqT.play();
 					
 				}
+				MainLogic.instance.getMp().stop();
+				MainLogic.instance.setMedia(RenderableHolder.previewSong[0]);
+				MainLogic.instance.setSong(MainLogic.instance.getMedia());
+				MainLogic.instance.getMp().play();
 				currentSong = 1;
 			}
 		});
@@ -463,12 +468,17 @@ public class SelectSongScreen extends Pane {
 							bpm.setText("BPM : 200");
 							artist.setText("Artist : Xi");
 							totalNote.setText("Total Note: 2000");
-								albumArt.setImage(RenderableHolder.albumArt[1]);
+							albumArt.setImage(RenderableHolder.albumArt[1]);
+							MainLogic.instance.getMp().stop();
+							MainLogic.instance.setMedia(RenderableHolder.previewSong[1]);
+							MainLogic.instance.setSong(MainLogic.instance.getMedia());
+							MainLogic.instance.getMp().play();
 						}
 					});
 					seqT.play();
 					
 				}
+				
 				currentSong = 2;
 			}
 		});

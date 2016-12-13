@@ -43,7 +43,7 @@ public class RenderableHolder {
 		song[0] = new Media(ClassLoader.getSystemResource("L.mp3").toString());
 		song[1] = new Media(ClassLoader.getSystemResource("ANiMA.mp3").toString());
 		previewSong[0] = new Media(ClassLoader.getSystemResource("Lpreview.mp3").toString());
-		previewSong[1] = new Media(ClassLoader.getSystemResource("ANiMA.mp3").toString());
+		previewSong[1] = new Media(ClassLoader.getSystemResource("ANiMApreview.mp3").toString());
 	}
 	
 	public synchronized void remove(int index){

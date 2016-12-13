@@ -1,6 +1,7 @@
 package application;
-	
+
 import java.io.FileNotFoundException;
+import java.util.Random;
 
 import GUI.GameScreen;
 import GUI.MenuScreen;
@@ -18,18 +19,20 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
-
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws FileNotFoundException {
-			Scene scene = MainLogic.instance.getCurrentScreen();
-			primaryStage.setTitle("ProgMusic");
-			primaryStage.setScene(scene);
-			primaryStage.show();
+		 
 		
+		Scene scene = MainLogic.instance.getCurrentScreen();
+		primaryStage.setTitle("ProgMusic");
+		primaryStage.setScene(scene);
+		primaryStage.show();
 	}
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}

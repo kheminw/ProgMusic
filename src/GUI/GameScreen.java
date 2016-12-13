@@ -36,9 +36,6 @@ public class GameScreen extends Pane {
 	/** The gc. */
 	private GraphicsContext gc;
 	
-	/** The current score. */
-	private Text currentScore;
-	
 	/** The hp. */
 	private Rectangle hp ;
 	private Label score;

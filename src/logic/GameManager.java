@@ -63,6 +63,7 @@ public class GameManager {
 			@Override
 			public void handle(KeyEvent k){
 				System.out.println(currentTime);
+				
 			}
 		});
 		Platform.runLater(() -> gameScreen.requestFocus());

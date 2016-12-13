@@ -41,7 +41,8 @@ public class SelectSongScreen extends Pane {
 	private Font f = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Regular.otf")), 16);
 	private Font r = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Regular.otf")), 20);
 	private static int currentSong = 1;
-
+	private String highScore;
+	private String percent;
 	public SelectSongScreen() throws FileNotFoundException {
 		currentSong = 1;
 		Image image = RenderableHolder.bg[4];
@@ -112,16 +113,19 @@ public class SelectSongScreen extends Pane {
 		ftscoreLabel.setFromValue(0f);
 		ftscoreLabel.setToValue(1f);
 		ftscoreLabel.play();
-
-		Text score = new Text(115, 300, "0000000");
+//		String s =""+ MainLogic.instance.getSongSet().get(0).getHighScore();
+//		while(s.length()<7){
+//			highScore  = "0"+s;
+//		}
+		Text score = new Text(115, 300, highScore);
 		score.setFont(song);
 		score.setFill(Color.WHITE);
 		FadeTransition fadeTransitionScore = new FadeTransition(Duration.millis(3000), score);
 		fadeTransitionScore.setFromValue(0f);
 		fadeTransitionScore.setToValue(1f);
 		fadeTransitionScore.play();
-
-		Text scorePercent = new Text(175, 340, "00.00%");
+//		percent = MainLogic.instance.getSongSet().get(0).getHighScore()/10000 +"%";
+		Text scorePercent = new Text(175, 340, percent);
 		scorePercent.setFont(f);
 		scorePercent.setFill(Color.WHITE);
 		FadeTransition ftscorePercent = new FadeTransition(Duration.millis(3000), scorePercent);

@@ -39,11 +39,11 @@ public class DrawingUtility   {
 
 		 if(r == 1){
 		 note.setLayoutX(400);
-		 note.setStroke(Color.AQUA);
+		 note.setStroke(Color.RED);
 		 }
 		 if(r == 2){
 		 note.setLayoutX(485);
-		 note.setStroke(Color.TURQUOISE);
+		 note.setStroke(Color.GREEN);
 		 }
 		 if(r == 3){
 		 note.setLayoutX(570);
@@ -54,7 +54,6 @@ public class DrawingUtility   {
 		note.setEndX(-90);
 		note.setStartY(0);
 		note.setEndY(0);
-
 		note.setStrokeWidth(10);
 		note.setStrokeLineCap(StrokeLineCap.ROUND);
 		FadeTransition fadeTransition = new FadeTransition(Duration.millis(3000), note);

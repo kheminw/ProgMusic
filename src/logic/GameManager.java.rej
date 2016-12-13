@@ -1,0 +1,10 @@
+diff a/src/logic/GameManager.java b/src/logic/GameManager.java	(rejected hunks)
+@@ -62,7 +62,7 @@
+ 		gameScreen.setOnKeyPressed(new EventHandler<KeyEvent>(){
+ 			@Override
+ 			public void handle(KeyEvent k){
+-				System.out.println(currentTime);
++				System.out.println	(currentTime);
+ 				
+ 			}
+ 		});

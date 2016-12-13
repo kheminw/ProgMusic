@@ -10,6 +10,7 @@ import GUI.RenderableHolder;
 import GUI.SelectSongScreen;
 import GUI.SettingScreen;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.DoubleBinding;
 import javafx.beans.binding.StringExpression;
@@ -17,6 +18,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import logic.GameManager;
 import logic.MainLogic;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -51,7 +53,15 @@ public class Main extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
-
+	@Override
+	public void stop(){
+		if(MainLogic.instance.getGameScreen() != null){
+			GameManager.timer.interrupt();
+			GameManager.exec.shutdownNow();
+		}
+		Platform.exit();
+		System.exit(0);
+	}
 	/**
 	 * The main method.
 	 *

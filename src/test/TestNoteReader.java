@@ -19,6 +19,6 @@ public class TestNoteReader {
 
 	public static void main(String[] args) {
 		Map<Long, List<GameButton>> notes = new HashMap<Long, List<GameButton>>();
-		NoteReader.parseNote("ANiMA", notes);
+		NoteReader.parseNote("L", notes);
 	}
 }

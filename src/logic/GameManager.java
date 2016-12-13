@@ -2,12 +2,18 @@ package logic;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import GUI.GameScreen;
 import javafx.application.Platform;
+import javafx.concurrent.ScheduledService;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
+import utility.DrawingUtility;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -25,9 +31,10 @@ public class GameManager {
 	private static long currentTime;
 	private static long endTime;
 	private static Song currentSong;
-	private Thread timer;
+	public static Thread timer;
 	private Thread drawer;
-	private ScheduledExecutorService exec = Executors.newScheduledThreadPool(10);
+	public static ScheduledExecutorService exec = Executors.newScheduledThreadPool(10);
+	public static ScheduledService<Void> drawService;
 	private GameScreen gameScreen;
 
 	public GameManager(Song song, GameScreen game) {
@@ -42,7 +49,7 @@ public class GameManager {
 				MainLogic.instance.getMp().stop();
 			}
 		});
-		this.timer = new Thread(new Runnable(){
+		timer = new Thread(new Runnable(){
 			@Override
 			public void run(){
 				System.out.println(endTime);
@@ -59,33 +66,55 @@ public class GameManager {
 				});
 			}
 		});
-		gameScreen.setOnKeyPressed(new EventHandler<KeyEvent>(){
+//		gameScreen.setOnKeyPressed(new EventHandler<KeyEvent>(){
+//			@Override
+//			public void handle(KeyEvent k){
+//				System.out.println(currentTime);
+//			}
+//		});
+//		Platform.runLater(() -> gameScreen.requestFocus());
+		drawService = new ScheduledService<Void>(){
 			@Override
-			public void handle(KeyEvent k){
-				System.out.println(currentTime);
-			}
-		});
-		Platform.runLater(() -> gameScreen.requestFocus());
-		drawer = new Thread(new Runnable(){
-			@Override
-			public void run(){
-				for(long time: currentSong.getNotes().keySet()){
-					if(time - drawDelay <= currentTime){
-						for(GameButton btn: currentSong.getNotes().get(time)){
-							if(!btn.isDrawn){
-								Platform.runLater(new Runnable(){
-									@Override
-									public void run(){
-										btn.draw();
+			protected Task<Void> createTask(){
+				return new Task<Void>(){
+					@Override
+					public Void call(){
+						for(long time: currentSong.getNotes().keySet()){
+							if(Math.abs(time - currentTime) <= 50){
+								for(GameButton btn: currentSong.getNotes().get(time)){
+									if(!btn.isDrawn){
+										System.out.println("draw " + btn.toString());
+										System.out.println(MainLogic.instance.getCurrentScreen().getRoot());
+										Platform.runLater(() -> btn.draw());
+										//btn.draw();
 									}
-								});
-							}
+								}
+							}		
 						}
-					}		
-				}
+						return null;
+					}
+				};
 			}
-		});
-		timer.start();
+		};
+//		Task<Void> drawing = new Task<Void>(){
+//			@Override
+//			public Void call(){
+//				for(long time: currentSong.getNotes().keySet()){
+//					if(Math.abs(time - currentTime) <= drawDelay||true){
+//						for(GameButton btn: currentSong.getNotes().get(time)){
+//							if(!btn.isDrawn){
+//								btn.draw();
+//							}
+//						}
+//					}		
+//				}
+//				return null;
+//			}
+//		};
+		System.out.println(MainLogic.instance.getCurrentScreen().getRoot());
+		drawService.setPeriod(Duration.millis(10));
+		drawService.setExecutor(exec);
+		
 	}
 	
 	/**

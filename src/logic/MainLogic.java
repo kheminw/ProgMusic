@@ -147,8 +147,8 @@ public class MainLogic {
 			mp = new MediaPlayer(media);
 			this.mp.play();
 			mp.setVolume(volume);			
-
-			
+			GameManager.drawService.start();
+			GameManager.timer.start();
 
 		}
 	}

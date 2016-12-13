@@ -70,7 +70,7 @@ public class HoldButton extends GameButton {
 		// TODO Auto-generated method stub
 		try {
 			List<Node> objects = DrawingUtility.drawHoldButton(lane, holdTime, Color.AQUA);
-			MainLogic.instance.getGameScreen().getChildren().addAll(objects);
+			MainLogic.instance.getGameScreen().addLongNote(objects);
 		} catch (InvalidDirectionException | InvalidLengthException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -57,8 +57,9 @@ public class TapButton extends GameButton {
 	@Override
 	public void draw() {
 		// TODO Auto-generated method stub
+		System.out.println("being drawn lane: "+this.lane);
 		Line note = DrawingUtility.drawTapButton(this.lane);
-		MainLogic.instance.getGameScreen().getChildren().add(note);
+		MainLogic.instance.getGameScreen().addNote(note);
 		this.isDrawn = true;
 	}
 	@Override

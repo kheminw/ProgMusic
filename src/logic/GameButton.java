@@ -26,6 +26,8 @@ public abstract class GameButton implements Tappable, IRenderable {
 	/** The lane. */
 	protected int lane;
 	
+	protected boolean isDrawn;
+	
 	/**
 	 * Instantiates a new game button.
 	 *
@@ -39,6 +41,7 @@ public abstract class GameButton implements Tappable, IRenderable {
 		this.hit = false;
 		this.destroyed = false;
 		this.lane = lane;
+		this.isDrawn = false;
 	}
 	
 	/* (non-Javadoc)
@@ -114,5 +117,8 @@ public abstract class GameButton implements Tappable, IRenderable {
 	@Override
 	public String toString(){
 		return "GameButton: "+"Lane: " +lane+" Time: "+spawnTime;
+	}
+	public boolean isDrawn(){
+		return isDrawn;
 	}
 }

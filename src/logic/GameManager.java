@@ -12,6 +12,7 @@ public class GameManager {
 	public static final int perfectDelay = 50;
 	public static final int goodDelay = 100;
 	public static final int activationDelay = 200;
+	public static final int drawDelay = 2000;
 	public static final float hardModifier = 0.5f;
 	public static final float easyModifier = 1.5f;
 	
@@ -36,6 +37,11 @@ public class GameManager {
 				System.out.println(endTime);
 				while(currentTime < endTime){
 					currentTime = (long) MainLogic.instance.getMp().currentTimeProperty().get().toMillis();
+					for(long time: currentSong.getNotes().keySet()){
+						if(time - drawDelay <= currentTime){
+							
+						}
+					}
 					//System.out.println("Time: " + currentTime + " Ends at: " + endTime);
 					if(currentTime>endTime-1000) break;
 				}

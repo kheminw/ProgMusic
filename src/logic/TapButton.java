@@ -1,5 +1,6 @@
 package logic;
 
+import javafx.scene.shape.Line;
 import utility.DrawingUtility;
 
 // TODO: Auto-generated Javadoc
@@ -26,7 +27,7 @@ public class TapButton extends GameButton {
 	@Override
 	public void hit() {
 		// TODO Auto-generated method stub
-		if(isActivated()&&!isDestroyed()){
+		if(isVisible()){
 			checkGrade();
 			this.destroyed = true;
 		}
@@ -47,7 +48,7 @@ public class TapButton extends GameButton {
 	@Override
 	public boolean isVisible() {
 		// TODO Auto-generated method stub
-		return false;
+		return isActivated()&&!isDestroyed();
 	}
 
 	/* (non-Javadoc)
@@ -56,7 +57,9 @@ public class TapButton extends GameButton {
 	@Override
 	public void draw() {
 		// TODO Auto-generated method stub
-		DrawingUtility.drawTapButton(this.lane);
+		Line note = DrawingUtility.drawTapButton(this.lane);
+		MainLogic.instance.getGameScreen().getChildren().add(note);
+		this.isDrawn = true;
 	}
 	@Override
 	public String toString(){

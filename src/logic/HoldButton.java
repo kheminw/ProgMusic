@@ -1,5 +1,8 @@
 package logic;
 
+import java.util.List;
+
+import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import utility.DrawingUtility;
 import utility.InvalidDirectionException;
@@ -56,7 +59,7 @@ public class HoldButton extends GameButton {
 	@Override
 	public boolean isVisible() {
 		// TODO Auto-generated method stub
-		return false;
+		return isActivated()&&!isDestroyed();
 	}
 
 	/* (non-Javadoc)
@@ -66,11 +69,13 @@ public class HoldButton extends GameButton {
 	public void draw() {
 		// TODO Auto-generated method stub
 		try {
-			DrawingUtility.drawHoldButton(lane, holdTime, Color.AQUA);
+			List<Node> objects = DrawingUtility.drawHoldButton(lane, holdTime, Color.AQUA);
+			MainLogic.instance.getGameScreen().getChildren().addAll(objects);
 		} catch (InvalidDirectionException | InvalidLengthException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		this.isDrawn = true;
 	}
 	@Override
 	public String toString(){

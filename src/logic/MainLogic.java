@@ -2,7 +2,9 @@ package logic;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import GUI.GameScreen;
@@ -57,6 +59,9 @@ public class MainLogic {
 			public void run(){
 				L = new Song((long) RenderableHolder.song[0].getDuration().toMillis(), "L", "Ice",
 						RenderableHolder.albumArt[0], RenderableHolder.song[0]);
+				Map<Long, List<GameButton>> notes = new HashMap<Long, List<GameButton>>();
+				utility.NoteReader.parseNote("L", notes);
+				L.setNotes(notes);
 				songSet.add(L);
 			}
 		});
@@ -66,6 +71,9 @@ public class MainLogic {
 			public void run(){
 				ANiMA = new Song((long) RenderableHolder.song[1].getDuration().toMillis(), "ANiMA", "xi",
 						RenderableHolder.albumArt[1], RenderableHolder.song[1]);
+				Map<Long, List<GameButton>> notes = new HashMap<Long, List<GameButton>>();
+				utility.NoteReader.parseNote("ANiMA", notes);
+				ANiMA.setNotes(notes);
 				songSet.add(ANiMA);
 			}
 		});
@@ -143,6 +151,9 @@ public class MainLogic {
 			
 
 		}
+	}
+	public GameScreen getGameScreen(){
+		return game;
 	}
 	public SettingScreen getSetting(){
 		return setting;

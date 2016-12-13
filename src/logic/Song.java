@@ -182,6 +182,9 @@ public class Song {
 		this.notes = notes;
 	}
 	
+	public Map<Long, List<GameButton>> getNotes(){
+		return notes;
+	}
 	/**
 	 * Sets the high score.
 	 *

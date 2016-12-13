@@ -34,17 +34,20 @@ public class DrawingUtility   {
 	 *
 	 * @param r the r
 	 */
-	public static void drawTapButton(int r) {
+	public static Line drawTapButton(int r) {
 		Line note = new Line();
 
 		 if(r == 1){
 		 note.setLayoutX(400);
+		 note.setStroke(Color.AQUA);
 		 }
 		 if(r == 2){
 		 note.setLayoutX(485);
+		 note.setStroke(Color.TURQUOISE);
 		 }
 		 if(r == 3){
 		 note.setLayoutX(570);
+		 note.setStroke(Color.DARKBLUE);
 		 }
 		note.setLayoutY(90);
 		note.setStartX(-100);
@@ -54,7 +57,6 @@ public class DrawingUtility   {
 
 		note.setStrokeWidth(10);
 		note.setStrokeLineCap(StrokeLineCap.ROUND);
-		note.setStroke(Color.DARKBLUE);
 		FadeTransition fadeTransition = new FadeTransition(Duration.millis(3000), note);
 		fadeTransition.setFromValue(0.3f);
 		fadeTransition.setToValue(1f);
@@ -83,6 +85,7 @@ public class DrawingUtility   {
 		ParallelTransition parallelTransition = new ParallelTransition();
 		parallelTransition.getChildren().addAll(fadeTransition, translateTransition, scaleTransition);
 		parallelTransition.play();
+		return(note);
 		
 	}
 	

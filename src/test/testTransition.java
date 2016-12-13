@@ -31,8 +31,15 @@ import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.transform.Shear;
 import javafx.util.Duration;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class testTransition.
+ */
 public class testTransition extends Pane {
 
+	/**
+	 * Instantiates a new test transition.
+	 */
 	public testTransition() {
 		// TODO Auto-generated method stub
 		Polygon trapezoid = new Polygon();
@@ -153,6 +160,13 @@ public class testTransition extends Pane {
 	     
 		this.getChildren().addAll(note, rect,trapezoid, rightTrapezoid, centerTrapezoid);
 	}
+	
+	/**
+	 * Adds the points.
+	 *
+	 * @param polygon the polygon
+	 * @param array the array
+	 */
 	public synchronized static void addPoints(Polygon polygon, double[] array){
 		polygon.getPoints().clear();
 		polygon.getPoints().addAll(Arrays.stream(array).boxed().collect(Collectors.toList()));

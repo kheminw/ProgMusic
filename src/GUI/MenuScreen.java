@@ -52,14 +52,35 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 import logic.MainLogic;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MenuScreen.
+ */
 public class MenuScreen extends Pane{
+	
+	/** The canvas. */
 	private Canvas canvas;
+	
+	/** The gc. */
 	private GraphicsContext gc;
+	
+	/** The start. */
 	private Text start;
+	
+	/** The option. */
 	private Text option;
+	
+	/** The exit. */
 	private Text exit;
+	
+	/** The f. */
 	private  Font f = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Regular.otf")), 30);
 	
+	/**
+	 * Instantiates a new menu screen.
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 */
 	public MenuScreen() throws FileNotFoundException {
 		
 

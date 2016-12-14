@@ -40,12 +40,6 @@ import javafx.scene.text.*;
  */
 public class SettingScreen extends VBox {
 	
-	/** The canvas. */
-	private Canvas canvas;
-	
-	/** The gc. */
-	private GraphicsContext gc;
-	
 	/** The title font. */
 	private Font titleFont = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Light.otf")), 30);
 	
@@ -61,9 +55,7 @@ public class SettingScreen extends VBox {
 	/** The opacity bar. */
 	private	Slider opacityBar;
 	
-	/** The bright. */
-	private double bright;
-	
+
 	/**
 	 * Instantiates a new setting screen.
 	 *

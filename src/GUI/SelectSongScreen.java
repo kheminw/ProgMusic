@@ -36,7 +36,6 @@ import logic.MainLogic;
 public class SelectSongScreen extends Pane {
 
 	private Canvas canvas;
-	private GraphicsContext gc;
 	private Font song = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Regular.otf")), 40);
 	private Font f = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Regular.otf")), 16);
 	private Font r = Font.loadFont(new FileInputStream(new File("./res/SanFranciscoText-Regular.otf")), 20);
@@ -63,7 +62,6 @@ public class SelectSongScreen extends Pane {
 		this.setBackground(background);
 
 		this.canvas = new Canvas(800, 470);
-		gc = canvas.getGraphicsContext2D();
 		Rectangle open = new Rectangle(800, 470, Color.BLACK);
 		DropShadow ds = new DropShadow();
 		ds.setOffsetX(2.0f);
@@ -444,7 +442,6 @@ public class SelectSongScreen extends Pane {
 					ttbpmOut.setToX(350);
 					ttbpmOut.setAutoReverse(true);
 
-					ParallelTransition ptartistOut = new ParallelTransition();
 					FadeTransition ftartistOut = new FadeTransition(Duration.millis(1500), artist);
 					ftartistOut.setFromValue(1.0f);
 					ftartistOut.setToValue(0f);
@@ -452,7 +449,6 @@ public class SelectSongScreen extends Pane {
 					ttartistOut.setFromX(0);
 					ttartistOut.setToX(300);
 					
-					ParallelTransition pttotalNoteOut = new ParallelTransition();
 					FadeTransition fttotalNoteOut = new FadeTransition(Duration.millis(1500), totalNote);
 					fttotalNoteOut.setFromValue(1.0f);
 					fttotalNoteOut.setToValue(0f);
